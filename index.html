@@ -76,7 +76,7 @@
           <!-- Garis bawah kuning berbentuk goresan tangan (SVG).
                aria-hidden: hanya dekorasi, diabaikan pembaca layar.
                Catatan: tidak ada spasi sebelum </span> agar koma menempel ke kata "garis". -->
-          <span class="keyword">garis<svg class="keyword__underline" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 50 5, 120 4, 197 10" /></svg></span>,
+          <span class="keyword">garis<svg class="keyword__underline draw" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 50 5, 120 4, 197 10" /></svg></span>,
           jadi pengalaman yang utuh.
         </h1>
 
@@ -93,9 +93,9 @@
         </div>
 
         <!-- Visual hero: ilustrasi garis tipis (jendela browser + HP).
-             Untuk sekarang statis; animasi "tergambar perlahan" ditambahkan nanti. -->
+             Garis "tergambar perlahan" lewat script.js (kelas .draw). -->
         <div class="hero__visual" aria-hidden="true">
-          <svg class="line-art" viewBox="0 0 480 280" fill="none">
+          <svg class="line-art draw" viewBox="0 0 480 280" fill="none">
             <!-- Jendela browser -->
             <rect x="20" y="20" width="340" height="230" rx="14" />
             <line x1="20" y1="54" x2="360" y2="54" />
@@ -121,8 +121,249 @@
       </div>
     </section>
 
-    <!-- Section berikutnya (Layanan, Karya, Proses, Tentang, Kontak) akan ditambahkan di sini -->
+    <!-- ================= LAYANAN ================= -->
+    <!-- Section putih berisi 4 kartu layanan -->
+    <section class="section" id="layanan" aria-labelledby="layananTitle">
+      <div class="container">
+        <!-- Kepala section: label kecil, judul (1 kata kunci biru), deskripsi -->
+        <div class="section-head reveal">
+          <p class="eyebrow">Layanan</p>
+          <h2 class="section-title" id="layananTitle">
+            Apa yang bisa kami <span class="text-primary">bantu</span>
+          </h2>
+          <p class="section-desc">
+            Dari riset sampai visual final, kami bantu produk digitalmu mudah dipakai dan enak dilihat.
+          </p>
+        </div>
+
+        <!-- Grid kartu. Variabel --i dipakai CSS untuk jeda animasi muncul bergantian -->
+        <div class="grid grid--services">
+          <article class="card service-card reveal" style="--i: 0">
+            <!-- Ikon SVG manual (gaya Lucide). aria-hidden karena hanya hiasan -->
+            <div class="icon-tile" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/><path d="M10 19v-4"/><path d="M7 19h5"/><rect width="6" height="10" x="16" y="12" rx="2"/></svg>
+            </div>
+            <h3 class="card__title">UI/UX Design</h3>
+            <p class="card__text">Website dan aplikasi mobile, dari riset sampai prototype.</p>
+          </article>
+
+          <article class="card service-card reveal" style="--i: 1">
+            <div class="icon-tile" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+            </div>
+            <h3 class="card__title">Design System</h3>
+            <p class="card__text">Komponen dan panduan agar produk konsisten saat berkembang.</p>
+          </article>
+
+          <article class="card service-card reveal" style="--i: 2">
+            <div class="icon-tile" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M15.7 21.3a1 1 0 0 1-1.4 0l-1.6-1.6a1 1 0 0 1 0-1.4l5.6-5.6a1 1 0 0 1 1.4 0l1.6 1.6a1 1 0 0 1 0 1.4z"/><path d="m18 13-1.4-6.9a1 1 0 0 0-.7-.8L3.2 2a1 1 0 0 0-1.2 1.2l3.3 12.7a1 1 0 0 0 .8.7L13 18"/><path d="m2.3 2.3 7.3 7.3"/><circle cx="11" cy="11" r="2"/></svg>
+            </div>
+            <h3 class="card__title">Branding &amp; Visual</h3>
+            <p class="card__text">Logo, identitas visual, aset media sosial, materi presentasi.</p>
+          </article>
+
+          <article class="card service-card reveal" style="--i: 3">
+            <div class="icon-tile" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M10 3.5 11.9 8.6 17 10.5l-5.1 1.9L10 17.5l-1.9-5.1L3 10.5l5.1-1.9z"/><path d="M19 3v4"/><path d="M17 5h4"/><path d="M18 16v4"/><path d="M16 18h4"/></svg>
+            </div>
+            <h3 class="card__title">Motion &amp; Micro-interaction</h3>
+            <p class="card__text">Animasi Lottie dan interaksi kecil yang membuat produk terasa hidup.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= KARYA ================= -->
+    <!-- 3 kartu studi kasus. Untuk v1 masih placeholder.
+         Nanti ganti .work-card__media dengan <img src="assets/nama.webp" alt="..."> -->
+    <section class="section section--soft" id="karya" aria-labelledby="karyaTitle">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Karya</p>
+          <h2 class="section-title" id="karyaTitle">
+            Beberapa <span class="text-primary">karya</span> kami
+          </h2>
+          <p class="section-desc">
+            Proyek pribadi dan konsep redesign. Proyek klien ditampilkan setelah mendapat izin.
+          </p>
+        </div>
+
+        <div class="grid grid--works">
+          <article class="card work-card reveal" style="--i: 0">
+            <!-- Kotak abu-biru sebagai pengganti gambar proyek -->
+            <div class="work-card__media" role="img" aria-label="Gambar proyek belum tersedia">
+              <span>[GAMBAR PROYEK 1]</span>
+            </div>
+            <div class="work-card__body">
+              <p class="badge">[KATEGORI PROYEK 1]</p>
+              <h3 class="card__title">[NAMA PROYEK 1]</h3>
+              <p class="card__text">[SATU KALIMAT HASIL PROYEK 1]</p>
+            </div>
+          </article>
+
+          <article class="card work-card reveal" style="--i: 1">
+            <div class="work-card__media" role="img" aria-label="Gambar proyek belum tersedia">
+              <span>[GAMBAR PROYEK 2]</span>
+            </div>
+            <div class="work-card__body">
+              <p class="badge">[KATEGORI PROYEK 2]</p>
+              <h3 class="card__title">[NAMA PROYEK 2]</h3>
+              <p class="card__text">[SATU KALIMAT HASIL PROYEK 2]</p>
+            </div>
+          </article>
+
+          <article class="card work-card reveal" style="--i: 2">
+            <div class="work-card__media" role="img" aria-label="Gambar proyek belum tersedia">
+              <span>[GAMBAR PROYEK 3]</span>
+            </div>
+            <div class="work-card__body">
+              <p class="badge">[KATEGORI PROYEK 3]</p>
+              <h3 class="card__title">[NAMA PROYEK 3]</h3>
+              <p class="card__text">[SATU KALIMAT HASIL PROYEK 3]</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROSES KERJA ================= -->
+    <!-- Pita biru selebar layar (lihat .section--blue di CSS) -->
+    <section class="section section--blue" id="proses" aria-labelledby="prosesTitle">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Proses kerja</p>
+          <!-- Di latar biru, kata kunci tetap putih tapi diberi garis bawah kuning -->
+          <h2 class="section-title" id="prosesTitle">
+            Empat <span class="text-underline">langkah</span> yang jelas
+          </h2>
+        </div>
+
+        <!-- <ol> karena urutan langkahnya penting -->
+        <ol class="grid grid--steps">
+          <li class="card step-card reveal" style="--i: 0">
+            <span class="step-card__number" aria-hidden="true">01</span>
+            <h3 class="card__title">Diskusi</h3>
+            <p class="card__text">Memahami kebutuhan dan tujuan bisnis.</p>
+          </li>
+          <li class="card step-card reveal" style="--i: 1">
+            <span class="step-card__number" aria-hidden="true">02</span>
+            <h3 class="card__title">Riset &amp; Wireframe</h3>
+            <p class="card__text">Memetakan alur pengguna.</p>
+          </li>
+          <li class="card step-card reveal" style="--i: 2">
+            <span class="step-card__number" aria-hidden="true">03</span>
+            <h3 class="card__title">Desain &amp; Prototype</h3>
+            <p class="card__text">Visual final yang bisa dicoba.</p>
+          </li>
+          <li class="card step-card reveal" style="--i: 3">
+            <span class="step-card__number" aria-hidden="true">04</span>
+            <h3 class="card__title">Handoff &amp; Dukungan</h3>
+            <p class="card__text">File rapi untuk developer, revisi sesuai kesepakatan.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= TENTANG ================= -->
+    <section class="section" id="tentang" aria-labelledby="tentangTitle">
+      <div class="container about">
+        <div class="about__text reveal">
+          <p class="eyebrow">Tentang</p>
+          <h2 class="section-title" id="tentangTitle">
+            Desain dimulai dari <span class="text-primary">mendengarkan</span>
+          </h2>
+          <p class="section-desc">
+            Rekha Creative didirikan oleh desainer UI/UX dengan pengalaman membangun produk edukasi
+            dan sistem keuangan dari nol. Kami percaya desain yang baik dimulai dari mendengarkan.
+          </p>
+          <!-- Garis tipis biru 1px sebagai dekorasi (motif garis Rekha) -->
+          <p class="about__meaning">
+            <em>Rekha</em> berasal dari bahasa Sanskerta <em>rekh</em>, artinya garis atau goresan.
+          </p>
+        </div>
+
+        <!-- Angka singkat di kartu sorotan kuning muda.
+             Angka diambil dari contoh di brief: pastikan benar sebelum online. -->
+        <dl class="stats reveal" style="--i: 1">
+          <div class="stats__item">
+            <dt class="stats__value">100+</dt>
+            <dd class="stats__label">formulir didigitalkan</dd>
+          </div>
+          <div class="stats__item">
+            <dt class="stats__value">Web &amp; mobile</dt>
+            <dd class="stats__label">website dan aplikasi</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ================= KONTAK / CTA PENUTUP ================= -->
+    <section class="section section--blue cta" id="kontak" aria-labelledby="kontakTitle">
+      <div class="container cta__inner reveal">
+        <h2 class="section-title" id="kontakTitle">
+          Punya ide? Mari kita tarik <span class="text-underline">garis pertamanya</span>.
+        </h2>
+        <p class="cta__desc">Konsultasi gratis, tanpa komitmen. Ceritakan kebutuhanmu lewat WhatsApp.</p>
+
+        <!-- Tombol WhatsApp besar. Di latar biru dipakai tombol putih (.btn--light) -->
+        <a class="btn btn--light btn--large"
+           href="https://wa.me/[ISI NOMOR WA]?text=Halo%20Rekha%20Creative"
+           target="_blank" rel="noopener">
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+          Chat via WhatsApp
+        </a>
+
+        <!-- Kontak alternatif -->
+        <ul class="cta__links">
+          <li>
+            <a href="mailto:[ISI EMAIL]">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              [ISI EMAIL]
+            </a>
+          </li>
+          <li>
+            <a href="[ISI LINK INSTAGRAM]" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a href="[ISI LINK TIKTOK]" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V3c.6 2.8 2.7 4.8 5.5 5"/></svg>
+              TikTok
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
   </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#hero" class="footer__logo">Rekha Creative</a>
+      <p class="footer__copy">&copy; 2026 Rekha Creative</p>
+      <!-- Ikon media sosial. aria-label wajib karena link hanya berisi ikon -->
+      <ul class="footer__social">
+        <li>
+          <a href="[ISI LINK INSTAGRAM]" target="_blank" rel="noopener" aria-label="Instagram Rekha Creative">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="[ISI LINK TIKTOK]" target="_blank" rel="noopener" aria-label="TikTok Rekha Creative">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V3c.6 2.8 2.7 4.8 5.5 5"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:[ISI EMAIL]" aria-label="Email Rekha Creative">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
 
   <!-- JavaScript diletakkan di akhir body (atau pakai defer) agar HTML dimuat lebih dulu -->
   <script src="script.js" defer></script>

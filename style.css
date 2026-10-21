@@ -351,6 +351,383 @@ a {
   fill: var(--color-bg);
 }
 
+/* ===== 5b. ANIMASI GARIS (Hero) =====
+   script.js mengukur panjang tiap garis (--len) lalu menambah kelas .is-drawing.
+   Trik: stroke-dasharray = panjang garis, lalu stroke-dashoffset digeser dari
+   panjang penuh ke 0, sehingga garis seolah digambar dari awal ke akhir. */
+.draw.is-drawing path,
+.draw.is-drawing line,
+.draw.is-drawing rect,
+.draw.is-drawing circle {
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+  animation: gambar-garis 1.1s ease-out forwards;
+  animation-delay: calc(var(--delay-awal, 0s) + var(--delay, 0s));
+}
+/* Garis bawah kuning digambar sedikit setelah halaman tampil */
+.keyword__underline {
+  --delay-awal: 0.4s;
+}
+/* Ilustrasi mulai setelah garis bawah */
+.line-art {
+  --delay-awal: 0.7s;
+}
+
+@keyframes gambar-garis {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ===== 5c. SECTION UMUM ===== */
+.section {
+  padding: 64px 0;
+}
+/* Latar biru sangat muda, untuk selingan antar section putih */
+.section--soft {
+  background: var(--color-bg-blue-soft);
+}
+/* Pita biru selebar layar (Proses & CTA). Pakai primary-dark karena berisi teks putih */
+.section--blue {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+
+/* Kepala section: rata tengah */
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+/* Label kecil di atas judul section. Diberi garis tipis biru di kiri-kanan (motif garis) */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+}
+.section--blue .eyebrow {
+  color: #fff;
+}
+
+.section-title {
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+/* Kata kunci biru di judul section */
+.text-primary {
+  color: var(--color-primary);
+}
+/* Kata kunci di latar biru: tetap putih, diberi garis bawah kuning (kuning hanya dekorasi) */
+.text-underline {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
+}
+
+.section-desc {
+  margin: 16px 0 0;
+  color: var(--color-text-muted);
+}
+
+/* ===== 5d. KARTU & GRID ===== */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* HP: satu kolom */
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Kartu putih bersudut membulat dengan bayangan lembut */
+.card {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+}
+.card__title {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.card__text {
+  margin: 8px 0 0;
+  color: var(--color-text-muted);
+}
+
+/* --- Kartu layanan --- */
+.service-card {
+  border: 1px solid transparent;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.service-card:hover {
+  border-color: var(--color-primary);   /* border aktif biru */
+}
+/* Kotak ikon biru muda */
+.icon-tile {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  background: var(--color-bg-blue-soft);
+}
+.icon-tile svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Gaya garis untuk semua ikon SVG manual (seperti Lucide) */
+.icon-tile svg,
+.btn__icon,
+.cta__links svg,
+.footer__social svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-tile {
+  color: var(--color-primary);
+}
+
+/* --- Kartu karya --- */
+.work-card {
+  padding: 0;
+  overflow: hidden;    /* agar gambar ikut sudut membulat */
+}
+/* Placeholder gambar, rasio 4:3. Ganti dengan <img> WebP nanti */
+.work-card__media {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  background:
+    linear-gradient(to right, rgba(57, 111, 239, 0.12) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(to bottom, rgba(57, 111, 239, 0.12) 1px, transparent 1px) 0 0 / 24px 24px,
+    #DCE6FD;
+  color: var(--color-primary-dark);
+  font-size: 14px;
+  font-weight: 700;
+}
+.work-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.work-card__body {
+  padding: 20px 24px 24px;
+}
+/* Badge kategori: latar kuning muda, teks gelap (kontras aman) */
+.badge {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text);
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-pill);
+}
+
+/* --- Kartu langkah proses --- */
+.step-card__number {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+/* ===== 5e. TENTANG ===== */
+.about {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+/* Teks rata tengah di HP */
+.about__text {
+  text-align: center;
+}
+/* Makna nama dengan garis tipis biru 1px di atasnya (motif garis Rekha) */
+.about__meaning {
+  margin: 24px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-primary);
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+/* Kartu sorotan kuning muda berisi angka */
+.stats {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 28px;
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-card);
+}
+.stats__item {
+  padding-left: 16px;
+  border-left: 3px solid var(--color-accent);   /* aksen kuning sebagai dekorasi */
+}
+.stats__value {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+.stats__label {
+  margin: 4px 0 0;
+  color: var(--color-text-muted);
+}
+
+/* ===== 5f. KONTAK / CTA ===== */
+.cta__inner {
+  max-width: 720px;
+  text-align: center;
+}
+.cta__desc {
+  margin: 16px 0 28px;
+}
+
+/* Tombol putih untuk latar biru */
+.btn--light {
+  background: #fff;
+  color: var(--color-primary-dark);
+}
+.btn--light:hover {
+  background: var(--color-bg-blue-soft);
+}
+.btn--large {
+  min-height: 56px;
+  padding: 16px 32px;
+  font-size: 16px;
+  gap: 10px;
+}
+.btn__icon {
+  width: 22px;
+  height: 22px;
+}
+
+.cta__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.cta__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  text-underline-offset: 4px;
+}
+.cta__links svg {
+  width: 20px;
+  height: 20px;
+}
+/* Fokus keyboard di latar biru memakai warna putih agar terlihat */
+.section--blue :focus-visible,
+.footer :focus-visible {
+  outline-color: #fff;
+}
+
+/* ===== 5g. FOOTER ===== */
+.footer {
+  background: var(--color-primary-dark);
+  color: #fff;
+  /* Garis tipis pemisah dengan CTA yang sama-sama biru */
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 32px 0;
+}
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+.footer__logo {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.footer__copy {
+  margin: 0;
+  font-size: 14px;
+}
+.footer__social {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer__social a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: background-color 0.2s;
+}
+.footer__social a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.footer__social svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== 5h. ANIMASI MUNCUL SAAT SCROLL =====
+   Hanya aktif jika JavaScript jalan (kelas .js di <html>) dan pengguna
+   TIDAK memilih "kurangi animasi". Tanpa JS, konten tetap tampil normal. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.2s;
+    /* --i dari HTML: kartu ke-2, ke-3 muncul sedikit lebih lambat (bergantian).
+       Jeda hanya untuk opacity & transform; border-color (hover) tanpa jeda. */
+    transition-delay: calc(var(--i, 0) * 90ms), calc(var(--i, 0) * 90ms), 0s;
+  }
+  /* script.js menambah .is-visible saat elemen masuk layar */
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ===== 6. TABLET (≥ 768px) ===== */
 @media (min-width: 768px) {
   :root {
@@ -373,6 +750,48 @@ a {
   .hero__actions {
     flex-direction: row;
     justify-content: center;
+  }
+
+  /* Section lebih lega */
+  .section {
+    padding: 88px 0;
+  }
+  .section-title {
+    font-size: 36px;
+  }
+
+  /* Grid 2 kolom untuk layanan & proses, 3 kolom untuk karya */
+  .grid--services,
+  .grid--steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .grid--works {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  /* Kartu karya lebih sempit di tablet: padding dikecilkan */
+  .work-card__body {
+    padding: 16px 18px 20px;
+  }
+
+  /* Tentang: teks kiri, angka kanan */
+  /* Kolom angka dibuat cukup lebar agar "Web & mobile" tidak pecah 2 baris */
+  .about {
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+  }
+  .stats__value {
+    white-space: nowrap;
+  }
+  .about__text {
+    text-align: left;
+  }
+
+  /* Footer: logo kiri, copyright tengah, ikon kanan */
+  .footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
@@ -410,6 +829,18 @@ a {
   .hero__visual {
     max-width: 560px;
     margin-top: 56px;
+  }
+
+  .section-title {
+    font-size: 44px;
+  }
+  /* Layanan & proses: 4 kolom berjajar */
+  .grid--services,
+  .grid--steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .work-card__body {
+    padding: 20px 24px 24px;
   }
 }
 

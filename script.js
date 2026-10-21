@@ -3,7 +3,16 @@
    JavaScript biasa (tanpa library) untuk interaksi kecil:
    1. Buka/tutup menu hamburger di mobile
    2. Bayangan navbar saat halaman di-scroll
+   3. Animasi garis SVG di Hero
+   4. Animasi muncul saat scroll
    ========================================================= */
+
+// Tandai bahwa JavaScript aktif. CSS memakai kelas .js ini agar elemen .reveal
+// hanya disembunyikan kalau JS jalan (kalau JS gagal, konten tetap terlihat).
+document.documentElement.classList.add("js");
+
+// Cek apakah pengguna memilih "kurangi animasi" di pengaturan HP/komputernya
+const kurangiAnimasi = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Ambil elemen-elemen yang dibutuhkan dari HTML berdasarkan id-nya
 const navbar = document.getElementById("navbar");
@@ -56,3 +65,47 @@ function cekScroll() {
 // { passive: true } memberi tahu browser bahwa listener ini tidak memblokir scroll → lebih ringan
 window.addEventListener("scroll", cekScroll, { passive: true });
 cekScroll(); // jalankan sekali saat halaman dimuat (misalnya jika dibuka di tengah halaman)
+
+/* ---------- 3. Animasi garis SVG di Hero ---------- */
+
+// Setiap <svg class="draw"> akan "digambar" garis per garis.
+// Caranya: ukur panjang tiap garis dengan getTotalLength(), simpan ke variabel CSS --len,
+// lalu CSS (lihat bagian 5b di style.css) menganimasikan stroke-dashoffset ke 0.
+if (!kurangiAnimasi) {
+  document.querySelectorAll(".draw").forEach((svg) => {
+    const bentuk = svg.querySelectorAll("path, line, rect, circle");
+    bentuk.forEach((el, urutan) => {
+      // +8 supaya ujung garis yang membulat (round cap) tidak terlihat sebagai titik sebelum mulai
+      const panjang = Math.ceil(el.getTotalLength()) + 8;
+      el.style.setProperty("--len", panjang);
+      el.style.setProperty("--delay", `${urutan * 0.08}s`); // garis berikutnya mulai sedikit lebih lambat
+    });
+    svg.classList.add("is-drawing");
+  });
+}
+
+/* ---------- 4. Animasi muncul saat scroll ---------- */
+
+// IntersectionObserver "mengawasi" elemen dan memberi tahu saat elemen masuk layar.
+// Jauh lebih ringan daripada menghitung posisi di setiap event scroll.
+const elemenReveal = document.querySelectorAll(".reveal");
+
+if (kurangiAnimasi || !("IntersectionObserver" in window)) {
+  // Tanpa animasi (atau browser lama): langsung tampilkan semua
+  elemenReveal.forEach((el) => el.classList.add("is-visible"));
+} else {
+  const pengamat = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          pengamat.unobserve(entry.target); // cukup sekali, setelah itu berhenti diawasi
+        }
+      });
+    },
+    // threshold 0.15: muncul saat 15% elemen terlihat.
+    // rootMargin bawah -40px: animasi mulai sedikit sebelum elemen benar-benar di tengah layar
+    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+  );
+  elemenReveal.forEach((el) => pengamat.observe(el));
+}
