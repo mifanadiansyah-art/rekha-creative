@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <!-- ===== Meta dasar ===== -->
+  <meta charset="UTF-8">
+  <!-- Agar tampilan menyesuaikan lebar layar HP (wajib untuk mobile-first) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekha Creative — Desain UI/UX, Branding & Motion</title>
+  <meta name="description" content="Rekha Creative merancang website, aplikasi, dan identitas visual yang mudah dipakai dan enak dilihat. Konsultasi gratis via WhatsApp.">
+
+  <!-- ===== Open Graph: tampilan preview saat link dibagikan di WA/IG/Facebook ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rekha Creative — Dari satu garis, jadi pengalaman yang utuh.">
+  <meta property="og:description" content="Kami merancang website, aplikasi, dan identitas visual yang mudah dipakai dan enak dilihat.">
+  <!-- URL website diisi setelah deploy -->
+  <meta property="og:url" content="[ISI URL WEBSITE]">
+  <!-- Gambar preview 1200×630 px, simpan di assets/og-image.jpg -->
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:locale" content="id_ID">
+
+  <!-- ===== Google Fonts: Urbanist (judul) dan Open Sans (teks isi) ===== -->
+  <!-- preconnect mempercepat koneksi ke server font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Urbanist:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- File CSS buatan sendiri -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Link "lompat ke konten" untuk pengguna keyboard/pembaca layar.
+       Tersembunyi, baru muncul saat ditekan Tab pertama kali. -->
+  <a class="skip-link" href="#main">Lompat ke konten</a>
+
+  <!-- ================= NAVBAR ================= -->
+  <!-- <header> menempel di atas (sticky) saat halaman di-scroll -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <!-- Logo teks, diklik kembali ke atas -->
+      <a href="#hero" class="navbar__logo">Rekha<span>Creative</span></a>
+
+      <!-- Tombol hamburger, hanya tampil di mobile.
+           aria-expanded memberi tahu pembaca layar apakah menu sedang terbuka. -->
+      <button class="navbar__toggle" id="navToggle" type="button"
+              aria-expanded="false" aria-controls="navMenu" aria-label="Buka menu">
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+
+      <!-- Menu navigasi. Tiap link scroll ke section dengan id yang sama.
+           (Section Layanan, Karya, dst. akan ditambahkan nanti.) -->
+      <nav class="navbar__menu" id="navMenu" aria-label="Navigasi utama">
+        <ul class="navbar__links">
+          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#karya">Karya</a></li>
+          <li><a href="#proses">Proses</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+        <!-- Tombol kecil ke WhatsApp. Ganti [ISI NOMOR WA] dengan format 62xxxxxxxxxx -->
+        <a class="btn btn--primary btn--small"
+           href="https://wa.me/[ISI NOMOR WA]?text=Halo%20Rekha%20Creative"
+           target="_blank" rel="noopener">Konsultasi Gratis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <div class="container hero__inner">
+        <!-- Judul utama. Kata kunci "garis" diberi warna biru + garis bawah kuning -->
+        <h1 class="hero__title" id="heroTitle">
+          Dari satu
+          <!-- Garis bawah kuning berbentuk goresan tangan (SVG).
+               aria-hidden: hanya dekorasi, diabaikan pembaca layar.
+               Catatan: tidak ada spasi sebelum </span> agar koma menempel ke kata "garis". -->
+          <span class="keyword">garis<svg class="keyword__underline" viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 50 5, 120 4, 197 10" /></svg></span>,
+          jadi pengalaman yang utuh.
+        </h1>
+
+        <p class="hero__subtitle">
+          Kami merancang website, aplikasi, dan identitas visual yang mudah dipakai dan enak dilihat.
+        </p>
+
+        <!-- Dua tombol: utama (biru solid) ke WA, kedua (outline) ke section Karya -->
+        <div class="hero__actions">
+          <a class="btn btn--primary"
+             href="https://wa.me/[ISI NOMOR WA]?text=Halo%20Rekha%20Creative"
+             target="_blank" rel="noopener">Konsultasi Gratis</a>
+          <a class="btn btn--outline" href="#karya">Lihat Karya</a>
+        </div>
+
+        <!-- Visual hero: ilustrasi garis tipis (jendela browser + HP).
+             Untuk sekarang statis; animasi "tergambar perlahan" ditambahkan nanti. -->
+        <div class="hero__visual" aria-hidden="true">
+          <svg class="line-art" viewBox="0 0 480 280" fill="none">
+            <!-- Jendela browser -->
+            <rect x="20" y="20" width="340" height="230" rx="14" />
+            <line x1="20" y1="54" x2="360" y2="54" />
+            <circle cx="42" cy="37" r="5" />
+            <circle cx="60" cy="37" r="5" />
+            <circle cx="78" cy="37" r="5" />
+            <!-- Isi halaman: judul, teks, tombol, kartu -->
+            <line x1="60" y1="92" x2="320" y2="92" />
+            <line x1="100" y1="112" x2="280" y2="112" />
+            <rect x="140" y="130" width="100" height="26" rx="13" />
+            <rect x="50" y="178" width="80" height="50" rx="8" />
+            <rect x="150" y="178" width="80" height="50" rx="8" />
+            <rect x="250" y="178" width="80" height="50" rx="8" />
+            <!-- HP di sisi kanan -->
+            <rect class="line-art__phone" x="330" y="70" width="120" height="200" rx="18" />
+            <line x1="372" y1="86" x2="408" y2="86" />
+            <rect x="346" y="104" width="88" height="54" rx="8" />
+            <line x1="346" y1="176" x2="434" y2="176" />
+            <line x1="346" y1="192" x2="410" y2="192" />
+            <rect x="346" y="216" width="88" height="24" rx="12" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section berikutnya (Layanan, Karya, Proses, Tentang, Kontak) akan ditambahkan di sini -->
+  </main>
+
+  <!-- JavaScript diletakkan di akhir body (atau pakai defer) agar HTML dimuat lebih dulu -->
+  <script src="script.js" defer></script>
+</body>
+</html>
