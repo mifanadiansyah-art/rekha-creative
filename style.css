@@ -838,11 +838,12 @@ body.menu-open {
   height: 52px;
   border-radius: 999px;
   background: var(--color-primary-main);
+  transition: background-color var(--dur-hover) var(--ease);
 }
 .work-card__arrow img {
   width: 22px;
   height: 22px;
-  transition: rotate var(--dur-hover) var(--ease);
+  transition: rotate var(--dur-hover) var(--ease), filter var(--dur-hover) var(--ease);
 }
 
 /* ===== 11. KARTU UMUM (Process Step & Value Card) ===== */
@@ -1878,9 +1879,6 @@ a.footer__link:hover {
     color: var(--color-primary-main);
     font-weight: 600;
   }
-  .service-row:hover {
-    background: rgba(255, 255, 255, 0.07);
-  }
   .service-row:hover .service-row__title {
     translate: 8px 0;
   }
@@ -1899,8 +1897,12 @@ a.footer__link:hover {
   .work-card:hover .work-card__name {
     color: var(--color-primary-main);
   }
+  .work-card:hover .work-card__arrow {
+    background: var(--color-secondary-main);
+  }
   .work-card:hover .work-card__arrow img {
     rotate: 45deg;
+    filter: brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(800%) hue-rotate(160deg);
   }
   .card:hover {
     transform: translateY(-4px);
