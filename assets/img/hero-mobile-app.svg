@@ -1,0 +1,40 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="334.8" height="356.4" viewBox="0 0 334.8 356.4" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Image 2 &#226;&#128;&#148; Mobile App" filter="url(#filter0_d_0_38)">
+<g clip-path="url(#clip0_0_38)">
+<rect x="43.2" y="21.6" width="248.4" height="270" rx="30.24" fill="#E3F2FD"/>
+<rect id="Phone" x="86.4001" y="41.04" width="162" height="280.8" rx="23.76" fill="white"/>
+<rect id="Rectangle" x="145.8" y="49.68" width="43.2" height="8.64" rx="4.32" fill="#272E32"/>
+<circle id="Ellipse" cx="115.56" cy="85.32" r="14.04" fill="#6BE3FF"/>
+<rect id="Rectangle_2" x="138.24" y="75.6" width="64.8" height="8.64" rx="4.32" fill="#272E32"/>
+<rect id="Rectangle_3" x="138.24" y="89.64" width="43.2" height="6.48" rx="3.24" fill="#5D6265"/>
+<rect id="Rectangle_4" x="99.36" y="112.32" width="136.08" height="75.6" rx="15.12" fill="#295AF6"/>
+<rect id="Rectangle_5" x="112.32" y="125.28" width="54" height="7.56" rx="3.24" fill="white"/>
+<rect id="Rectangle_6" x="112.32" y="140.4" width="97.2" height="15.12" rx="6.48" fill="white"/>
+<rect id="Rectangle_7" x="112.32" y="166.32" width="43.2" height="10.8" rx="5.4" fill="#FFFB04"/>
+<rect id="Rectangle_8" x="99.36" y="200.88" width="21.6" height="21.6" rx="6.48" fill="#EBEEFF"/>
+<rect id="Rectangle_9" x="129.6" y="204.12" width="75.6" height="7.56" rx="3.24" fill="#272E32"/>
+<rect id="Rectangle_10" x="129.6" y="214.92" width="47.52" height="5.4" rx="2.7" fill="#5D6265"/>
+<rect id="Rectangle_11" x="99.3599" y="228.96" width="21.6" height="21.6" rx="6.48" fill="#FFFB04"/>
+<rect id="Rectangle_12" x="129.6" y="232.2" width="75.6" height="7.56" rx="3.24" fill="#272E32"/>
+<rect id="Rectangle_13" x="129.6" y="243" width="47.52" height="5.4" rx="2.7" fill="#5D6265"/>
+<rect id="Rectangle_14" x="99.3601" y="257.04" width="21.6" height="21.6" rx="6.48" fill="#EBEEFF"/>
+<rect id="Rectangle_15" x="129.6" y="260.28" width="75.6" height="7.56" rx="3.24" fill="#272E32"/>
+<rect id="Rectangle_16" x="129.6" y="271.08" width="47.52" height="5.4" rx="2.7" fill="#5D6265"/>
+</g>
+<rect x="46.44" y="24.84" width="241.92" height="263.52" rx="27" stroke="white" stroke-width="6.48"/>
+</g>
+<defs>
+<filter id="filter0_d_0_38" x="0" y="0" width="334.8" height="356.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="21.6"/>
+<feGaussianBlur stdDeviation="21.6"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.15 0 0 0 0 0.35 0 0 0 0.14 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_38"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_38" result="shape"/>
+</filter>
+<clipPath id="clip0_0_38">
+<rect x="43.2" y="21.6" width="248.4" height="270" rx="30.24" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="BG Ribbons" clip-path="url(#clip0_0_129)">
+<path id="Vector" d="M980 -60C1180 120 1500 80 1520 320C1540 560 1200 600 1260 860" stroke-width="150" stroke-linecap="round" stroke="#EBEEFF"/>
+<path id="Vector_2" d="M-120 620C80 520 260 760 420 980" stroke-width="120" stroke-linecap="round" stroke="#EBEEFF"/>
+</g>
+<defs>
+<clipPath id="clip0_0_129">
+<rect width="1440" height="900" fill="white"/>
+</clipPath>
+</defs>
+</svg>

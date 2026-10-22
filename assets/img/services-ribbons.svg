@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1440" height="1239" viewBox="0 0 1440 1239" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="BG Ribbons (animate: slow float)" opacity="0.06" clip-path="url(#clip0_0_36)">
+<path id="Vector" d="M-100 223.02C200 49.56 380 446.04 640 322.14C900 198.24 980 -99.12 1240 49.56" stroke-width="160" stroke-linecap="round" stroke="white"/>
+<path id="Vector_2" d="M1560 644.28C1300 768.18 1260 1115.1 980 1189.44C760 1251.39 640 1065.54 420 1338.12" stroke-width="140" stroke-linecap="round" stroke="white"/>
+<path id="Vector_3" d="M-80 1015.98C120 941.64 200 1214.22 360 1362.9" stroke-width="110" stroke-linecap="round" stroke="white"/>
+</g>
+<defs>
+<clipPath id="clip0_0_36">
+<rect width="1440" height="1239" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -2,6 +2,13 @@
 
 Oct 21, 2026 · @Udin Petot
 
+> **Pembaruan 22 Okt 2026:** desain website diganti total mengikuti Figma
+> [Company Things](https://www.figma.com/design/I1gWgu0lK4kssCfk7z1CWZ/Company-Things?node-id=16-81)
+> (desktop node 16:81, mobile node 25:197) dan catatan animasi di `rekha-landing-notes.md`.
+> Bagian **Arah visual** dan **Struktur halaman** di bawah sudah tidak berlaku untuk tampilan
+> (konten sekarang berbahasa Inggris, font Montserrat, warna dari variable Figma).
+> Tujuan, target pengunjung, aturan teknis, dan cakupan v1 tetap berlaku.
+
 ## Ringkasan
 
 Versi pertama website Rekha Creative adalah landing page satu halaman yang memperkenalkan agency, layanannya, dan cara menghubungi. Targetnya: online dan bisa dibagikan di bio IG/TikTok dalam 1-2 minggu.

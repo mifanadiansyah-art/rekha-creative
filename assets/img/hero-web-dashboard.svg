@@ -1,0 +1,45 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="399.6" height="432" viewBox="0 0 399.6 432" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Image 1 &#226;&#128;&#148; Web Dashboard" filter="url(#filter0_d_0_93)">
+<g clip-path="url(#clip0_0_93)">
+<rect x="43.2" y="21.6" width="313.2" height="345.6" rx="30.24" fill="#EBEEFF"/>
+<rect id="Rectangle" x="43.2" y="21.6" width="313.2" height="36.72" fill="white"/>
+<circle id="Ellipse" cx="65.3401" cy="39.42" r="4.86" fill="#FF4C4C"/>
+<circle id="Ellipse_2" cx="80.46" cy="39.42" r="4.86" fill="#F2B705"/>
+<circle id="Ellipse_3" cx="95.5802" cy="39.42" r="4.86" fill="#22A06B"/>
+<rect id="Rectangle_2" x="118.8" y="33.48" width="162" height="12.96" rx="6.48" fill="#EBEEFF"/>
+<rect id="Rectangle_3" x="62.6401" y="77.76" width="129.6" height="12.96" rx="6.48" fill="#272E32"/>
+<rect id="Rectangle_4" x="62.64" y="99.36" width="86.4" height="8.64" rx="4.32" fill="#5D6265"/>
+<rect id="Rectangle_5" x="62.64" y="123.12" width="274.32" height="125.28" rx="15.12" fill="white"/>
+<rect id="Rectangle_6" x="79.9201" y="187.92" width="19.44" height="43.2" rx="5.4" fill="#AEBBFD"/>
+<rect id="Rectangle_7" x="115.56" y="164.16" width="19.44" height="66.96" rx="5.4" fill="#AEBBFD"/>
+<rect id="Rectangle_8" x="151.2" y="179.28" width="19.44" height="51.84" rx="5.4" fill="#AEBBFD"/>
+<rect id="Rectangle_9" x="186.84" y="144.72" width="19.44" height="86.4" rx="5.4" fill="#AEBBFD"/>
+<rect id="Rectangle_10" x="222.48" y="170.64" width="19.44" height="60.48" rx="5.4" fill="#AEBBFD"/>
+<rect id="Rectangle_11" x="258.12" y="131.76" width="19.44" height="99.36" rx="5.4" fill="#295AF6"/>
+<rect id="Rectangle_12" x="293.76" y="155.52" width="19.44" height="75.6" rx="5.4" fill="#AEBBFD"/>
+<rect id="Rectangle_13" x="62.6401" y="261.36" width="131.76" height="86.4" rx="15.12" fill="white"/>
+<circle id="Ellipse_4" cx="88.5602" cy="287.28" r="12.96" fill="#FFFB04"/>
+<rect id="Rectangle_14" x="75.6001" y="308.88" width="75.6" height="10.8" rx="5.4" fill="#272E32"/>
+<rect id="Rectangle_15" x="75.6" y="326.16" width="47.52" height="7.56" rx="3.78" fill="#5D6265"/>
+<rect id="Rectangle_16" x="205.2" y="261.36" width="131.76" height="86.4" rx="15.12" fill="#295AF6"/>
+<rect id="Rectangle_17" x="218.16" y="276.48" width="54" height="8.64" rx="4.32" fill="white"/>
+<rect id="Rectangle_18" x="218.16" y="293.76" width="92.88" height="15.12" rx="6.48" fill="white"/>
+<rect id="Rectangle_19" x="218.16" y="321.84" width="64.8" height="12.96" rx="6.48" fill="#6BE3FF"/>
+</g>
+<rect x="46.44" y="24.84" width="306.72" height="339.12" rx="27" stroke="white" stroke-width="6.48"/>
+</g>
+<defs>
+<filter id="filter0_d_0_93" x="0" y="0" width="399.6" height="432" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="21.6"/>
+<feGaussianBlur stdDeviation="21.6"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.15 0 0 0 0 0.35 0 0 0 0.14 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_93"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_93" result="shape"/>
+</filter>
+<clipPath id="clip0_0_93">
+<rect x="43.2" y="21.6" width="313.2" height="345.6" rx="30.24" fill="white"/>
+</clipPath>
+</defs>
+</svg>
