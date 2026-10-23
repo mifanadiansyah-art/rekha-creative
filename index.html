@@ -5,16 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rekha Creative — Digital Product Studio</title>
-  <meta name="description" content="We design digital products people love to use. UI/UX, branding and motion for startups and brands, from Bandung.">
+  <meta name="description" content="We design digital products people love to use. UI/UX, branding, motion and marketing visuals — from apps and websites to banners, flyers and pitch decks. Based in Bandung.">
 
   <!-- ===== Open Graph (preview saat link dibagikan) ===== -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Rekha Creative — We design digital products people love to use.">
-  <meta property="og:description" content="UI/UX, branding and motion for startups and brands — crafted to look good and work even better.">
-  <!-- Ganti dengan URL lengkap, contoh https://rekha-creative.vercel.app/ -->
-  <meta property="og:url" content="[ISI URL WEBSITE]">
-  <!-- Gambar preview 1200×630 px. WhatsApp butuh URL lengkap (https://...) -->
-  <meta property="og:image" content="[ISI URL WEBSITE]/assets/og-image.jpg">
+  <meta property="og:description" content="UI/UX, branding, motion and marketing visuals — from apps and websites to banners, flyers and pitch decks.">
+  <meta property="og:url" content="https://rekha-creative.vercel.app/">
+  <!-- TODO: file assets/og-image.jpg (1200×630 px) belum ada — buat lalu taruh di folder assets/ -->
+  <meta property="og:image" content="https://rekha-creative.vercel.app/assets/og-image.jpg">
 
   <!-- ===== Favicon ===== -->
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
@@ -90,14 +89,14 @@
       <div class="container hero__inner">
         <div class="hero__copy">
           <p class="eyebrow-chip load-in" style="--i: 0">
-            <img src="assets/img/dot-eyebrow.svg" alt="" width="8" height="8">
+            <span class="eyebrow-chip__dot"></span>
             Digital Product Studio · Bandung
           </p>
           <h1 class="hero__title load-in" id="heroTitle" style="--i: 1">
             We design digital products <span class="text-primary">people love</span> to use.
           </h1>
           <p class="hero__subtitle load-in" style="--i: 2">
-            UI/UX, branding and motion for startups and brands — crafted to look good and work even better.
+            UI/UX, branding, motion and marketing visuals — from apps and websites to banners, flyers and pitch decks.
           </p>
           <div class="hero__actions load-in" style="--i: 3">
             <a class="btn btn--primary" data-wa="Halo Rekha Creative, saya ingin diskusi tentang project." href="#" target="_blank" rel="noopener noreferrer">
@@ -158,8 +157,8 @@
             <div class="hv hv-stat float" data-depth="18" style="--fd: 4.2s; --fdel: -1s">
               <span class="hv-stat__icon"><img src="assets/img/icon-stat.svg" alt="" width="21.6" height="21.6"></span>
               <span class="hv-stat__text">
-                <span class="hv-stat__value">120+</span>
-                <span class="hv-stat__label">Screens designed</span>
+                <span class="hv-stat__value" data-stat="hero">120+</span>
+                <span class="hv-stat__label" data-stat-label="hero">Screens designed</span>
               </span>
             </div>
 
@@ -196,11 +195,11 @@
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
         <div class="marquee__group">
-          <img src="assets/img/dot-marquee.svg" alt="" width="12" height="12"><span>UI/UX Design</span>
-          <img src="assets/img/dot-marquee.svg" alt="" width="12" height="12"><span>Website</span>
+          <img src="assets/img/dot-marquee.svg" alt="" width="12" height="12"><span>UI/UX &amp; Prototype</span>
+          <img src="assets/img/dot-marquee.svg" alt="" width="12" height="12"><span>Web &amp; Mobile App</span>
           <img src="assets/img/dot-marquee.svg" alt="" width="12" height="12"><span>Logo &amp; Branding</span>
           <img src="assets/img/dot-marquee.svg" alt="" width="12" height="12"><span>Lottie Animation</span>
-          <img src="assets/img/dot-marquee.svg" alt="" width="12" height="12"><span>Interactive Prototype</span>
+          <img src="assets/img/dot-marquee.svg" alt="" width="12" height="12"><span>Marketing Visuals</span>
         </div>
       </div>
     </div>
@@ -214,27 +213,36 @@
         <img src="assets/img/services-ribbons-mobile.svg" alt="">
       </picture>
 
+      <div class="deco-layer" aria-hidden="true">
+        <img class="deco twinkle services__sp1" src="assets/img/services-sparkle-1.svg" alt="" width="40" height="40">
+        <img class="deco twinkle services__sp2" src="assets/img/services-sparkle-2.svg" alt="" width="20" height="20" style="--fdel: -1s">
+        <img class="deco twinkle services__sp3" src="assets/img/services-sparkle-3.svg" alt="" width="12" height="12" style="--fdel: -2s">
+        <img class="deco twinkle services__sp4" src="assets/img/services-sparkle-4.svg" alt="" width="16" height="16" style="--fdel: -0.6s">
+        <img class="deco twinkle services__spm1" src="assets/img/services-sparkle-m1.svg" alt="" width="24" height="24">
+        <img class="deco twinkle services__spm2" src="assets/img/services-sparkle-m2.svg" alt="" width="12" height="12" style="--fdel: -1.5s">
+      </div>
+
       <div class="container">
         <div class="heading heading--center reveal">
-          <p class="heading__eyebrow">WHAT WE DO</p>
+          <p class="heading__eyebrow text-secondary">WHAT WE DO</p>
           <h2 class="heading__title" id="servicesTitle">Services for your <span class="text-secondary">next launch.</span></h2>
         </div>
 
         <!-- Seluruh baris bisa diklik → WhatsApp dengan pesan per layanan -->
         <ul class="service-list">
           <li class="reveal" style="--i: 0">
-            <a class="service-row" data-wa="Halo Rekha Creative, saya tertarik dengan layanan UI/UX Design." href="#" target="_blank" rel="noopener noreferrer">
+            <a class="service-row" data-wa="Halo Rekha Creative, saya tertarik dengan layanan UI/UX &amp; Prototype." href="#" target="_blank" rel="noopener noreferrer">
               <span class="service-row__num">01</span>
-              <span class="service-row__title">UI/UX Design</span>
-              <span class="service-row__desc">Research-driven interfaces for web and mobile apps.</span>
+              <span class="service-row__title">UI/UX &amp; Prototype</span>
+              <span class="service-row__desc">Research-driven interfaces and clickable prototypes for web and mobile.</span>
               <span class="service-row__arrow"><img src="assets/img/icon-arrow-white-24.svg" alt="" width="24" height="24"></span>
             </a>
           </li>
           <li class="reveal" style="--i: 1">
-            <a class="service-row" data-wa="Halo Rekha Creative, saya tertarik dengan layanan Website." href="#" target="_blank" rel="noopener noreferrer">
+            <a class="service-row" data-wa="Halo Rekha Creative, saya tertarik dengan layanan Web &amp; Mobile App." href="#" target="_blank" rel="noopener noreferrer">
               <span class="service-row__num">02</span>
-              <span class="service-row__title">Website</span>
-              <span class="service-row__desc">Fast, responsive websites built from your design.</span>
+              <span class="service-row__title">Web &amp; Mobile App</span>
+              <span class="service-row__desc">Fast, responsive websites and apps, built from your design.</span>
               <span class="service-row__arrow"><img src="assets/img/icon-arrow-white-24.svg" alt="" width="24" height="24"></span>
             </a>
           </li>
@@ -255,10 +263,10 @@
             </a>
           </li>
           <li class="reveal" style="--i: 4">
-            <a class="service-row" data-wa="Halo Rekha Creative, saya tertarik dengan layanan Interactive Prototype." href="#" target="_blank" rel="noopener noreferrer">
+            <a class="service-row" data-wa="Halo Rekha Creative, saya tertarik dengan layanan Marketing Visuals." href="#" target="_blank" rel="noopener noreferrer">
               <span class="service-row__num">05</span>
-              <span class="service-row__title">Interactive Prototype</span>
-              <span class="service-row__desc">Clickable prototypes to test ideas before you build.</span>
+              <span class="service-row__title">Marketing Visuals</span>
+              <span class="service-row__desc">Banners, flyers and pitch decks that make your brand look sharp.</span>
               <span class="service-row__arrow"><img src="assets/img/icon-arrow-white-24.svg" alt="" width="24" height="24"></span>
             </a>
           </li>
@@ -267,88 +275,51 @@
     </section>
 
     <!-- =====================================================
-         SELECTED WORKS (Figma 22:70 / 26:240)
-         Kartu belum punya link ([ISI] di catatan), jadi sementara tidak bisa diklik.
+         SELECTED WORKS (Figma 22:70 / 26:240) — carousel
+         Kartu project dibuat script.js dari PROJECTS di content.js.
+         Desktop: 4 kartu per halaman (geser per halaman). Mobile: 1 kartu per langkah.
          ===================================================== -->
     <section class="section works" id="works" aria-labelledby="worksTitle">
+      <div class="deco-layer" aria-hidden="true">
+        <img class="deco twinkle works__sp1" src="assets/img/works-sparkle-1.svg" alt="" width="36" height="36">
+        <img class="deco twinkle works__sp2" src="assets/img/works-sparkle-2.svg" alt="" width="20" height="20" style="--fdel: -1s">
+        <img class="deco twinkle works__sp3" src="assets/img/works-sparkle-3.svg" alt="" width="12" height="12" style="--fdel: -2s">
+        <img class="deco twinkle works__spm1" src="assets/img/works-sparkle-m1.svg" alt="" width="24" height="24">
+        <img class="deco twinkle works__spm2" src="assets/img/works-sparkle-m2.svg" alt="" width="12" height="12" style="--fdel: -1.5s">
+      </div>
+
       <div class="container">
         <div class="works__top">
           <div class="heading reveal">
-            <p class="heading__eyebrow">SELECTED WORKS</p>
+            <p class="heading__eyebrow works__eyebrow">SELECTED WORKS</p>
             <h2 class="heading__title" id="worksTitle">Recent <span class="text-primary">projects.</span></h2>
           </div>
-          <a class="btn btn--secondary works__all works__all--top reveal" data-link="portfolio" href="#" target="_blank" rel="noopener noreferrer">View All Works</a>
+          <!-- Tombol carousel versi desktop (kanan atas) -->
+          <div class="carousel-arrows carousel-arrows--top reveal" style="--i: 1">
+            <button class="carousel-btn" type="button" data-carousel="prev" aria-label="Previous projects"><img class="carousel-btn__icon" src="assets/img/icon-carousel-prev-white.svg" alt="" width="24" height="24"><img class="carousel-btn__icon carousel-btn__icon--outline" src="assets/img/icon-carousel-prev.svg" alt="" width="24" height="24"></button>
+            <button class="carousel-btn" type="button" data-carousel="next" aria-label="Next projects"><img class="carousel-btn__icon" src="assets/img/icon-carousel-next.svg" alt="" width="24" height="24"><img class="carousel-btn__icon carousel-btn__icon--outline" src="assets/img/icon-carousel-next-blue.svg" alt="" width="24" height="24"></button>
+          </div>
         </div>
 
-        <div class="works__grid">
-          <article class="work-card reveal" style="--i: 0">
-            <div class="work-card__image">
-              <!-- Ganti isi div ini dengan <img src="assets/img/project-01.webp" alt="..."> -->
-              <div class="work-card__placeholder">
-                <img src="assets/img/icon-image.svg" alt="" width="40" height="40">
-                <span>Replace with project image</span>
-              </div>
-            </div>
-            <div class="work-card__meta">
-              <div>
-                <h3 class="work-card__name">Project Name 01</h3>
-                <p class="work-card__cat">UI/UX Design · Mobile App</p>
-              </div>
-              <span class="work-card__arrow"><img src="assets/img/icon-arrow-work.svg" alt="" width="22" height="22"></span>
-            </div>
-          </article>
-
-          <article class="work-card reveal" style="--i: 1">
-            <div class="work-card__image">
-              <div class="work-card__placeholder">
-                <img src="assets/img/icon-image.svg" alt="" width="40" height="40">
-                <span>Replace with project image</span>
-              </div>
-            </div>
-            <div class="work-card__meta">
-              <div>
-                <h3 class="work-card__name">Project Name 02</h3>
-                <p class="work-card__cat">Website · Landing Page</p>
-              </div>
-              <span class="work-card__arrow"><img src="assets/img/icon-arrow-work.svg" alt="" width="22" height="22"></span>
-            </div>
-          </article>
-
-          <article class="work-card reveal" style="--i: 2">
-            <div class="work-card__image">
-              <div class="work-card__placeholder">
-                <img src="assets/img/icon-image.svg" alt="" width="40" height="40">
-                <span>Replace with project image</span>
-              </div>
-            </div>
-            <div class="work-card__meta">
-              <div>
-                <h3 class="work-card__name">Project Name 03</h3>
-                <p class="work-card__cat">Logo &amp; Branding</p>
-              </div>
-              <span class="work-card__arrow"><img src="assets/img/icon-arrow-work.svg" alt="" width="22" height="22"></span>
-            </div>
-          </article>
-
-          <article class="work-card reveal" style="--i: 3">
-            <div class="work-card__image">
-              <div class="work-card__placeholder">
-                <img src="assets/img/icon-image.svg" alt="" width="40" height="40">
-                <span>Replace with project image</span>
-              </div>
-            </div>
-            <div class="work-card__meta">
-              <div>
-                <h3 class="work-card__name">Project Name 04</h3>
-                <p class="work-card__cat">Lottie Animation</p>
-              </div>
-              <span class="work-card__arrow"><img src="assets/img/icon-arrow-work.svg" alt="" width="22" height="22"></span>
-            </div>
-          </article>
+        <div class="works__viewport" id="worksViewport" tabindex="0" aria-label="Recent projects, scroll horizontally">
+          <div class="works__track" id="worksTrack"></div>
         </div>
 
-        <!-- Versi mobile: tombol full-width di bawah grid -->
-        <a class="btn btn--secondary btn--block works__all works__all--bottom reveal" data-link="portfolio" href="#" target="_blank" rel="noopener noreferrer">View All Works</a>
+        <div class="works__controls">
+          <div class="works__progress">
+            <p class="works__counter" aria-live="polite"><span class="works__current" id="worksCurrent">01</span> <span class="works__total" id="worksTotal">/ 02</span></p>
+            <span class="works__bar"><span class="works__bar-fill" id="worksBar"></span></span>
+          </div>
+          <!-- Tombol carousel versi mobile (di samping penghitung) -->
+          <div class="carousel-arrows carousel-arrows--bottom">
+            <button class="carousel-btn" type="button" data-carousel="prev" aria-label="Previous project"><img class="carousel-btn__icon" src="assets/img/icon-carousel-prev-white.svg" alt="" width="24" height="24"><img class="carousel-btn__icon carousel-btn__icon--outline" src="assets/img/icon-carousel-prev.svg" alt="" width="24" height="24"></button>
+            <button class="carousel-btn" type="button" data-carousel="next" aria-label="Next project"><img class="carousel-btn__icon" src="assets/img/icon-carousel-next.svg" alt="" width="24" height="24"><img class="carousel-btn__icon carousel-btn__icon--outline" src="assets/img/icon-carousel-next-blue.svg" alt="" width="24" height="24"></button>
+          </div>
+          <a class="btn btn--secondary works__all works__all--top" data-link="portfolio" href="#" target="_blank" rel="noopener noreferrer">View All Works</a>
+        </div>
+
+        <!-- Versi mobile: tombol full-width di bawah -->
+        <a class="btn btn--secondary btn--block works__all works__all--bottom" data-link="portfolio" href="#" target="_blank" rel="noopener noreferrer">View All Works</a>
       </div>
     </section>
 
@@ -377,51 +348,74 @@
             <h2 class="heading__title" id="processTitle">From idea to <span class="text-secondary">launch.</span></h2>
           </div>
           <p class="pill-glass reveal" style="--i: 1">
-            <img class="pulse" src="assets/img/dot-process.svg" alt="" width="8" height="8">
+            <span class="pill-glass__dot"></span>
             Most projects ship in 2–6 weeks
           </p>
         </div>
 
-        <div class="steps" id="steps">
-          <!-- Garis putus-putus penghubung (horizontal di desktop, vertikal di mobile) -->
-          <img class="steps__line steps__line--h" src="assets/img/process-connector.svg" alt="" width="1080" height="2" aria-hidden="true">
-          <img class="steps__line steps__line--v" src="assets/img/process-connector-vertical.svg" alt="" width="824" height="2" aria-hidden="true">
-
-          <ol class="steps__list">
-            <li class="card step reveal" style="--i: 0">
-              <div class="step__top">
-                <span class="step__badge">01</span>
-                <span class="icon-box icon-box--step"><img src="assets/img/icon-search.svg" alt="" width="24" height="24"></span>
+        <!-- Panel 4 kolom (komponen Process Column). Jalur putus-putus tergambar per kolom:
+             horizontal di desktop, vertikal di mobile -->
+        <ol class="steps-panel reveal" id="steps" style="--i: 2">
+          <li class="pcol" style="--c: 0">
+            <span class="pcol__node"><img src="assets/img/process-icon-search.svg" alt="" width="20" height="20"></span>
+            <h3 class="pcol__title">Discover</h3>
+            <p class="pcol__text">We learn your goals, users and market.</p>
+            <div class="ill" aria-hidden="true">
+              <div class="ill__stage ill--discover">
+                <span class="ill-d__sticky ill-d__sticky--yellow"></span>
+                <span class="ill-d__line ill-d__line--1"></span>
+                <span class="ill-d__line ill-d__line--2"></span>
+                <span class="ill-d__sticky ill-d__sticky--cyan"></span>
+                <span class="ill-d__chart"></span>
+                <span class="ill-d__bar" style="--h: 26px; --x: 126px; --b: 0"></span>
+                <span class="ill-d__bar" style="--h: 40px; --x: 148px; --b: 1"></span>
+                <span class="ill-d__bar" style="--h: 32px; --x: 170px; --b: 2"></span>
+                <span class="ill-d__bar ill-d__bar--main" style="--h: 54px; --x: 192px; --b: 3"></span>
+                <img class="ill-d__magnifier" src="assets/img/process-magnifier.svg" alt="" width="56" height="56">
               </div>
-              <h3 class="card__title">Discover</h3>
-              <p class="card__text">We learn your goals, users and market.</p>
-            </li>
-            <li class="card step reveal" style="--i: 1">
-              <div class="step__top">
-                <span class="step__badge">02</span>
-                <span class="icon-box icon-box--step"><img src="assets/img/icon-map.svg" alt="" width="24" height="24"></span>
+            </div>
+            <img class="pcol__chevron" src="assets/img/process-chevron.svg" alt="" width="14" height="14">
+          </li>
+          <li class="pcol" style="--c: 1">
+            <span class="pcol__node"><img src="assets/img/process-icon-map.svg" alt="" width="20" height="20"></span>
+            <h3 class="pcol__title">Define</h3>
+            <p class="pcol__text">We map the flows and agree on scope.</p>
+            <div class="ill" aria-hidden="true">
+              <img class="ill__stage ill--svg" src="assets/img/process-ill-define.svg" alt="" width="244" height="170">
+            </div>
+            <img class="pcol__chevron" src="assets/img/process-chevron.svg" alt="" width="14" height="14">
+          </li>
+          <li class="pcol" style="--c: 2">
+            <span class="pcol__node"><img src="assets/img/process-icon-pen.svg" alt="" width="20" height="20"></span>
+            <h3 class="pcol__title">Design</h3>
+            <p class="pcol__text">We craft the UI and test it with users.</p>
+            <div class="ill" aria-hidden="true">
+              <img class="ill__stage ill--svg" src="assets/img/process-ill-design.svg" alt="" width="244" height="170">
+            </div>
+            <img class="pcol__chevron" src="assets/img/process-chevron.svg" alt="" width="14" height="14">
+          </li>
+          <li class="pcol" style="--c: 3">
+            <span class="pcol__node"><img src="assets/img/process-icon-rocket.svg" alt="" width="20" height="20"></span>
+            <h3 class="pcol__title">Deliver</h3>
+            <p class="pcol__text">We hand off files, code or prototypes — ready to launch.</p>
+            <div class="ill" aria-hidden="true">
+              <div class="ill__stage ill--deliver">
+                <span class="ill-v__phone"></span>
+                <span class="ill-v__screen"></span>
+                <span class="ill-v__bar ill-v__bar--white"></span>
+                <span class="ill-v__bar ill-v__bar--cyan"></span>
+                <span class="ill-v__bar ill-v__bar--b1"></span>
+                <span class="ill-v__bar ill-v__bar--b2"></span>
+                <span class="ill-v__toast"><span class="ill-v__check"><img src="assets/img/process-check.svg" alt="" width="12" height="12"></span>Launched!</span>
+                <img class="ill-v__dot" src="assets/img/process-dot-1.svg" alt="" width="10" height="10" style="left: 150px; top: 36px">
+                <img class="ill-v__dot" src="assets/img/process-dot-2.svg" alt="" width="8" height="8" style="left: 200px; top: 30px">
+                <img class="ill-v__dot" src="assets/img/process-dot-3.svg" alt="" width="9" height="9" style="left: 214px; top: 132px">
+                <img class="ill-v__dot" src="assets/img/process-dot-4.svg" alt="" width="7" height="7" style="left: 132px; top: 140px">
+                <img class="ill-v__sparkle" src="assets/img/process-ill-sparkle.svg" alt="" width="24" height="24">
               </div>
-              <h3 class="card__title">Define</h3>
-              <p class="card__text">We map the flows and agree on scope.</p>
-            </li>
-            <li class="card step reveal" style="--i: 2">
-              <div class="step__top">
-                <span class="step__badge">03</span>
-                <span class="icon-box icon-box--step"><img src="assets/img/icon-pen.svg" alt="" width="24" height="24"></span>
-              </div>
-              <h3 class="card__title">Design</h3>
-              <p class="card__text">We craft the UI and test it with users.</p>
-            </li>
-            <li class="card step reveal" style="--i: 3">
-              <div class="step__top">
-                <span class="step__badge">04</span>
-                <span class="icon-box icon-box--step"><img src="assets/img/icon-rocket.svg" alt="" width="24" height="24"></span>
-              </div>
-              <h3 class="card__title">Deliver</h3>
-              <p class="card__text">We hand off files, code or prototypes.</p>
-            </li>
-          </ol>
-        </div>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -437,6 +431,14 @@
       <div class="deco-layer" aria-hidden="true">
         <img class="deco twinkle why__sp1" src="assets/img/why-sparkle-1.svg" alt="" width="28" height="28">
         <img class="deco twinkle why__sp2" src="assets/img/why-sparkle-2.svg" alt="" width="18" height="18" style="--fdel: -1.2s">
+        <img class="deco twinkle why__sp3" src="assets/img/why-sparkle-3.svg" alt="" width="40" height="40" style="--fdel: -0.5s">
+        <img class="deco twinkle why__sp4" src="assets/img/why-sparkle-4.svg" alt="" width="18" height="18" style="--fdel: -2s">
+        <img class="deco twinkle why__sp5" src="assets/img/why-sparkle-5.svg" alt="" width="14" height="14" style="--fdel: -1.6s">
+        <img class="deco twinkle why__sp6" src="assets/img/why-sparkle-6.svg" alt="" width="20" height="20" style="--fdel: -0.9s">
+        <img class="deco twinkle why__sp7" src="assets/img/why-sparkle-7.svg" alt="" width="12" height="12" style="--fdel: -2.6s">
+        <img class="deco twinkle why__spm1" src="assets/img/why-sparkle-m1.svg" alt="" width="24" height="24">
+        <img class="deco twinkle why__spm2" src="assets/img/why-sparkle-m2.svg" alt="" width="14" height="14" style="--fdel: -1.2s">
+        <img class="deco twinkle why__spm3" src="assets/img/why-sparkle-m3.svg" alt="" width="10" height="10" style="--fdel: -2.2s">
       </div>
 
       <div class="container">
@@ -463,16 +465,44 @@
           </article>
         </div>
 
-        <!-- Strip statistik. data-count = angka akhir untuk animasi hitung naik -->
-        <div class="stats reveal" style="--i: 3">
-          <picture class="stats__ribbons" aria-hidden="true">
-            <source media="(min-width: 768px)" srcset="assets/img/stats-ribbons.svg">
-            <img src="assets/img/stats-ribbons-mobile.svg" alt="">
-          </picture>
-          <div class="stat"><span class="stat__value stat__value--accent" data-count="30" data-suffix="+">30+</span><span class="stat__label">Projects delivered</span></div>
-          <div class="stat"><span class="stat__value" data-count="4" data-suffix="+">4+</span><span class="stat__label">Years of experience</span></div>
-          <div class="stat"><span class="stat__value stat__value--accent" data-count="15" data-suffix="+">15+</span><span class="stat__label">Happy clients</span></div>
-          <div class="stat"><span class="stat__value" data-count="24" data-suffix="h">24h</span><span class="stat__label">Average reply time</span></div>
+        <!-- Panel biru "By the numbers". Angka diambil dari STATS di content.js (data-stat = urutan) -->
+        <div class="numbers reveal" style="--i: 3">
+          <img class="numbers__ribbons" src="assets/img/numbers-ribbons.svg" alt="" aria-hidden="true">
+          <div class="numbers__intro">
+            <p class="heading__eyebrow text-secondary">BY THE NUMBERS</p>
+            <h3 class="numbers__title">Big Creative, big impact.</h3>
+            <p class="numbers__text">We keep our team small so every project gets real attention — from first sketch to launch.</p>
+          </div>
+          <div class="numbers__grid" id="stats">
+            <div class="stat-tile">
+              <div class="stat-tile__top">
+                <span class="stat-tile__value" data-stat="0">30+</span>
+                <span class="stat-tile__icon"><img src="assets/img/icon-briefcase.svg" alt="" width="22" height="22"></span>
+              </div>
+              <span class="stat-tile__label" data-stat-label="0">Projects delivered</span>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-tile__top">
+                <span class="stat-tile__value" data-stat="1">4+</span>
+                <span class="stat-tile__icon"><img src="assets/img/icon-calendar.svg" alt="" width="22" height="22"></span>
+              </div>
+              <span class="stat-tile__label" data-stat-label="1">Years of experience</span>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-tile__top">
+                <span class="stat-tile__value" data-stat="2">15+</span>
+                <span class="stat-tile__icon"><img src="assets/img/icon-users-white.svg" alt="" width="22" height="22"></span>
+              </div>
+              <span class="stat-tile__label" data-stat-label="2">Happy clients</span>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-tile__top">
+                <span class="stat-tile__value" data-stat="3">&lt; 3h</span>
+                <span class="stat-tile__icon"><img src="assets/img/icon-bolt-white.svg" alt="" width="22" height="22"></span>
+              </div>
+              <span class="stat-tile__label" data-stat-label="3">Average reply time</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -485,6 +515,15 @@
         <source media="(min-width: 768px)" srcset="assets/img/faq-ribbons.svg">
         <img src="assets/img/faq-ribbons-mobile.svg" alt="">
       </picture>
+
+      <div class="deco-layer" aria-hidden="true">
+        <img class="deco twinkle faq__sp1" src="assets/img/faq-sparkle-1.svg" alt="" width="36" height="36">
+        <img class="deco twinkle faq__sp2" src="assets/img/faq-sparkle-2.svg" alt="" width="20" height="20" style="--fdel: -1s">
+        <img class="deco twinkle faq__sp3" src="assets/img/faq-sparkle-3.svg" alt="" width="12" height="12" style="--fdel: -2s">
+        <img class="deco twinkle faq__sp4" src="assets/img/faq-sparkle-4.svg" alt="" width="14" height="14" style="--fdel: -0.6s">
+        <img class="deco twinkle faq__spm1" src="assets/img/faq-sparkle-m1.svg" alt="" width="24" height="24">
+        <img class="deco twinkle faq__spm2" src="assets/img/faq-sparkle-m2.svg" alt="" width="12" height="12" style="--fdel: -1.5s">
+      </div>
 
       <div class="container faq__inner">
         <div class="faq__left">
@@ -526,14 +565,14 @@
               </button>
             </h3>
             <div class="faq-item__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
-              <div><p>[ISI JAWABAN FAQ 2]</p></div>
+              <div><p>It depends on your project&rsquo;s scope. We&rsquo;ll send a clear quote after a quick chat — competitive pricing, and real value for every rupiah.</p></div>
             </div>
           </div>
 
           <div class="faq-item reveal" style="--i: 2">
             <h3 class="faq-item__q">
               <button type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
-                <span>Can you build the website too?</span>
+                <span>Can you build mobile apps too?</span>
                 <span class="faq-item__toggle">
                   <img class="faq-item__plus" src="assets/img/icon-plus.svg" alt="" width="18" height="18">
                   <img class="faq-item__minus" src="assets/img/icon-minus.svg" alt="" width="18" height="18">
@@ -541,7 +580,7 @@
               </button>
             </h3>
             <div class="faq-item__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
-              <div><p>[ISI JAWABAN FAQ 3]</p></div>
+              <div><p>Yes. We design and build mobile apps — and websites too — from the first screen to launch.</p></div>
             </div>
           </div>
 
@@ -556,7 +595,7 @@
               </button>
             </h3>
             <div class="faq-item__a" id="faq-a4" role="region" aria-labelledby="faq-q4">
-              <div><p>[ISI JAWABAN FAQ 4]</p></div>
+              <div><p>Just your idea, goals and any references you like. We&rsquo;ll guide you through the rest in a short discovery call.</p></div>
             </div>
           </div>
 
@@ -571,7 +610,7 @@
               </button>
             </h3>
             <div class="faq-item__a" id="faq-a5" role="region" aria-labelledby="faq-q5">
-              <div><p>[ISI JAWABAN FAQ 5]</p></div>
+              <div><p>Of course. But we dig into your requirements in detail first, so the result matches what you expect from the start — keeping revisions minimal.</p></div>
             </div>
           </div>
         </div>
@@ -588,17 +627,12 @@
          CTA (Figma 31:561 / 26:391)
          ===================================================== -->
     <section class="section cta" aria-labelledby="ctaTitle">
-      <picture class="ribbons ribbons--cta" aria-hidden="true">
-        <source media="(min-width: 768px)" srcset="assets/img/cta-ribbons.svg">
-        <img src="assets/img/cta-ribbons-mobile.svg" alt="">
-      </picture>
-
       <!-- Dekorasi desktop (kartu brief, tag, sparkle) di bingkai 1440 -->
       <div class="deco-layer cta__deco" aria-hidden="true">
         <div class="cta-brief-wrap">
           <div class="cta-brief" style="rotate: 6deg">
             <div class="cta-brief__top">
-              <span class="cta-brief__square"></span>
+              <span class="cta-brief__square"><img src="assets/img/icon-pen-white.svg" alt="" width="18" height="18"></span>
               <span class="cta-brief__text">
                 <span class="cta-brief__title">New project brief</span>
                 <span class="cta-brief__sub">Mobile app · UI/UX</span>
@@ -609,6 +643,7 @@
         </div>
         <div class="cta-tag-wrap cta-tag-wrap--web float" style="--fd: 4s; --fdel: -1s"><span class="cta-tag cta-tag--web" style="rotate: -4deg">Website</span></div>
         <div class="cta-tag-wrap cta-tag-wrap--lottie float" style="--fd: 4.8s; --fdel: -2s"><span class="cta-tag cta-tag--lottie" style="rotate: 4deg">Lottie Animation</span></div>
+        <div class="cta-tag-wrap cta-tag-wrap--deck float" style="--fd: 4.4s; --fdel: -0.4s"><span class="cta-tag cta-tag--deck" style="rotate: 5deg">Pitch Deck</span></div>
         <img class="deco twinkle cta__sp1" src="assets/img/cta-sparkle-1.svg" alt="" width="34" height="34">
         <img class="deco twinkle cta__sp2" src="assets/img/cta-sparkle-2.svg" alt="" width="18" height="18" style="--fdel: -0.8s">
         <img class="deco twinkle cta__sp3" src="assets/img/cta-sparkle-3.svg" alt="" width="22" height="22" style="--fdel: -1.6s">
@@ -621,23 +656,23 @@
           <div class="chat__row chat__row--in"><span class="chat__bubble chat__bubble--in" style="--r: -3deg">Hi Rekha! We need a new app.</span></div>
           <div class="chat__row chat__row--out">
             <span class="chat__typing"><i></i><i></i><i></i></span>
-            <span class="chat__bubble chat__bubble--out" style="--r: 3deg">Let's talk! We'll reply today.</span>
+            <span class="chat__bubble chat__bubble--out" style="--r: 3deg">Let&rsquo;s talk! We&rsquo;ll reply within hours.</span>
           </div>
         </div>
 
         <p class="available reveal">
-          <img class="available__dot" src="assets/img/dot-available.svg" alt="" width="8" height="8">
+          <span class="available__dot"></span>
           Available for new projects
         </p>
-        <h2 class="cta__title reveal" id="ctaTitle" style="--i: 1">Got an idea? <span class="text-primary">Let's build it.</span></h2>
-        <p class="cta__sub reveal" style="--i: 2">Tell us about your project. We usually reply within one day.</p>
+        <h2 class="cta__title reveal" id="ctaTitle" style="--i: 1">Got a <span class="text-danger">problem?</span><br> Let&rsquo;s <span class="text-primary">Solve it.</span></h2>
+        <p class="cta__sub reveal" style="--i: 2">Tell us about your problem. We usually reply within a few hours.</p>
         <a class="btn btn--primary btn--grow cta__btn reveal" style="--i: 3" data-wa="Halo Rekha Creative, saya ingin memulai project." href="#" target="_blank" rel="noopener noreferrer">
           Start a Project
           <img class="btn__arrow" src="assets/img/icon-arrow-cta.svg" alt="" width="20" height="20">
         </a>
         <p class="cta__alt reveal" style="--i: 4">
           <span>or email us at</span>
-          <a data-link="email" href="#">hello@rekhacreative.com</a>
+          <a data-link="email" data-contact="email" href="#">rekhacreative.id@gmail.com</a>
         </p>
       </div>
     </section>
@@ -656,11 +691,11 @@
     <div class="marquee marquee--reverse" aria-hidden="true">
       <div class="marquee__track">
         <div class="marquee__group">
-          <img src="assets/img/dot-marquee-footer.svg" alt="" width="12" height="12"><span>UI/UX Design</span>
-          <img src="assets/img/dot-marquee-footer.svg" alt="" width="12" height="12"><span>Website</span>
+          <img src="assets/img/dot-marquee-footer.svg" alt="" width="12" height="12"><span>UI/UX &amp; Prototype</span>
+          <img src="assets/img/dot-marquee-footer.svg" alt="" width="12" height="12"><span>Web &amp; Mobile App</span>
           <img src="assets/img/dot-marquee-footer.svg" alt="" width="12" height="12"><span>Logo &amp; Branding</span>
           <img src="assets/img/dot-marquee-footer.svg" alt="" width="12" height="12"><span>Lottie Animation</span>
-          <img src="assets/img/dot-marquee-footer.svg" alt="" width="12" height="12"><span>Interactive Prototype</span>
+          <img src="assets/img/dot-marquee-footer.svg" alt="" width="12" height="12"><span>Marketing Visuals</span>
         </div>
       </div>
     </div>
@@ -672,12 +707,13 @@
             <!-- Logo/White dari Figma -->
             <span class="logo"><span class="logo__p logo__p1"><img src="assets/img/logo/white-1.svg" alt=""></span><span class="logo__p logo__p2"><img src="assets/img/logo/white-2.svg" alt=""></span><span class="logo__p logo__p3"><img src="assets/img/logo/white-3.svg" alt=""></span><span class="logo__p logo__p4"><img src="assets/img/logo/white-4.svg" alt=""></span><span class="logo__p logo__p5"><img src="assets/img/logo/white-5.svg" alt=""></span><span class="logo__p logo__p6"><img src="assets/img/logo/white-6.svg" alt=""></span><span class="logo__p logo__p7"><img src="assets/img/logo/white-7.svg" alt=""></span><span class="logo__p logo__p8"><img src="assets/img/logo/white-8.svg" alt=""></span><span class="logo__p logo__p9"><img src="assets/img/logo/white-9.svg" alt=""></span><span class="logo__p logo__p10"><img src="assets/img/logo/white-10.svg" alt=""></span><span class="logo__p logo__p11"><img src="assets/img/logo/white-11.svg" alt=""></span><span class="logo__p logo__p12"><img src="assets/img/logo/white-12.svg" alt=""></span><span class="logo__p logo__p13"><img src="assets/img/logo/white-13.svg" alt=""></span><span class="logo__p logo__p14"><img src="assets/img/logo/white-14.svg" alt=""></span><span class="logo__p logo__p15"><img src="assets/img/logo/white-15.svg" alt=""></span><span class="logo__p logo__mark"><img src="assets/img/logo/white-mark.png" alt=""></span></span>
           </a>
-          <p>We design digital products people love to use — UI/UX, branding and motion from Bandung.</p>
+          <p>UI/UX, branding, motion and marketing visuals — from apps and websites to banners, flyers and pitch decks. Based in Bandung.</p>
         </div>
         <div class="footer__socials">
           <p class="footer__label">Let’s connect</p>
           <div class="footer__icons">
             <a class="social-btn" data-link="instagram" href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="assets/img/icon-instagram.svg" alt="" width="22" height="22"></a>
+            <!-- TODO: akun TikTok belum ada, link diatur di content.js -->
             <a class="social-btn" data-link="tiktok" href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="assets/img/icon-tiktok.svg" alt="" width="22" height="22"></a>
             <a class="social-btn" data-wa="" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img src="assets/img/icon-whatsapp.svg" alt="" width="22" height="22"></a>
             <a class="social-btn" data-link="email" href="#" aria-label="Email"><img src="assets/img/icon-email.svg" alt="" width="22" height="22"></a>
@@ -705,8 +741,8 @@
         </div>
         <div class="footer__col footer__col--contact">
           <p class="footer__col-title">CONTACT</p>
-          <a class="footer__link footer__link--contact" data-link="email" href="#">hello@rekhacreative.com</a>
-          <a class="footer__link footer__link--contact" data-wa="" href="#" target="_blank" rel="noopener noreferrer">+62 8xx-xxxx-xxxx</a>
+          <a class="footer__link footer__link--contact" data-link="email" data-contact="email" href="#">rekhacreative.id@gmail.com</a>
+          <a class="footer__link footer__link--contact" data-wa="" data-contact="whatsappLabel" href="#" target="_blank" rel="noopener noreferrer">+62 823-8038-2633</a>
           <p class="footer__link footer__link--contact">Bandung, Indonesia</p>
         </div>
       </div>
@@ -723,6 +759,7 @@
     </div>
   </footer>
 
+  <script src="content.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>
