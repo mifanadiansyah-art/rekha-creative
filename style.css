@@ -826,6 +826,7 @@ body.menu-open {
 .works__viewport {
   margin-right: calc(-1 * var(--gutter));
   overflow-x: auto;
+  overflow-y: hidden;   /* hanya geser horizontal; jangan muncul scroll vertikal saat kartu animasi reveal */
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
