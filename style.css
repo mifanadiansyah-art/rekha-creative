@@ -1878,10 +1878,10 @@ a.footer__link:hover {
   .ribbons--footer {
     --rb-top: -80px;
   }
+  /* Pita Why: SVG 1750×1514 (lebih lebar dari bingkai 1440), tetap di tengah, naik 205px seperti Figma */
   .ribbons--why {
-    --rb-top: -14.26vw;
-    left: -11.11%;
-    width: 121.53%;
+    --rb-top: min(-205px, -14.26vw);
+    width: calc(max(1440px, 100%) * 1.2153);
   }
 
   /* Dekorasi desktop diposisikan di bingkai 1440 yang berada di tengah layar */
@@ -2488,8 +2488,9 @@ a.footer__link:hover {
     /* Trik lebar tetap: teks tebal tak terlihat "memesan" ruang */
     display: inline-grid;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 24px;
+    letter-spacing: 0.048px;
     color: var(--color-neutral-on-surface-variant);
     transition: color 0.2s var(--ease);
   }
@@ -2825,10 +2826,6 @@ a.footer__link:hover {
   60% { translate: 40px 80px; }
   80% { translate: 30px 10px; }
 }
-@keyframes ribbon-float {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-16px, 10px); }
-}
 @keyframes bounce {
   0%, 100% { translate: 0 0; }
   50% { translate: 0 -4px; }
@@ -2911,9 +2908,6 @@ a.footer__link:hover {
   .ill-v__sparkle { animation: twinkle 3s ease-in-out infinite; }
   .twinkle { animation: twinkle 3.5s ease-in-out var(--fdel, 0s) infinite; }
   .available__dot { animation: dot-success-primary 1.2s steps(1, end) infinite, pulse-ring 1.2s ease-out infinite; }
-
-  /* Pita latar mengambang pelan */
-  .ribbons--float img { animation: ribbon-float 16s ease-in-out infinite; }
 
   /* Marquee (durasi dihitung script.js dari lebar isi) */
   .marquee__track { animation: marquee var(--marquee-dur, 40s) linear infinite; }

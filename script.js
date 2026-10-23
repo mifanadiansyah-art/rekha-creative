@@ -87,7 +87,7 @@ const sectionIds = ["services", "works", "process", "about", "faq"];
 
 function updateMenuAktif() {
   const batas = window.innerHeight * 0.4;   // section dianggap aktif saat atasnya melewati 40% layar
-  let aktif = "services";                   // default sama seperti Figma (Services aktif)
+  let aktif = null;                         // di hero belum ada menu yang aktif
   sectionIds.forEach((id) => {
     const el = document.getElementById(id);
     if (el && el.getBoundingClientRect().top <= batas) aktif = id;
