@@ -400,6 +400,15 @@ body.menu-open {
 .ribbons--footer {
   --rb-top: -60px;
 }
+/* Mobile: footer lebih tinggi dari SVG pita, jadi pita direntangkan sampai bawah (tetap proporsional, sisi dipotong) */
+.ribbons--footer {
+  bottom: 0;
+}
+.ribbons--footer img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
 
 /* Lapisan dekorasi (sparkle, tag) — posisi absolut terhadap section */
 .deco-layer {
@@ -817,10 +826,6 @@ body.menu-open {
   align-items: flex-end;
   justify-content: space-between;
 }
-.works__all.works__all--top,
-.carousel-arrows.carousel-arrows--top {
-  display: none;
-}
 
 /* Viewport = jendela geser. Mobile: melebar sampai tepi kanan layar supaya kartu berikutnya mengintip */
 .works__viewport {
@@ -842,26 +847,23 @@ body.menu-open {
 .works__viewport.is-dragging .work-card {
   pointer-events: none;
 }
+/* Selama animasi geser 0.6s (tombol/drag), snap bawaan dimatikan supaya tidak "menarik" duluan */
+.works__viewport.is-animating {
+  scroll-snap-type: none;
+}
 .works__track {
   display: flex;
   gap: 16px;
-}
-/* Mobile: "halaman" tidak dipakai — kartu langsung jadi anggota track */
-.works-page {
-  display: contents;
 }
 .works__track .work-card {
   flex: 0 0 calc(100% - 70px);   /* 370 − 70 = 300px seperti Figma */
   scroll-snap-align: start;
 }
-.works__track .work-card:last-child {
-  margin-right: var(--gutter);
-}
-
-/* Kartu baru masuk dengan slide + fade saat ganti halaman */
-.work-card.is-entering {
-  animation: fade-up var(--dur-reveal) var(--ease) both;
-  animation-delay: calc(var(--i, 0) * 0.08s);
+/* Ruang kosong di ujung kanan (margin kartu terakhir tidak ikut dihitung area scroll) */
+.works__track::after {
+  content: "";
+  flex: 0 0 calc(var(--gutter) - 16px);
+  min-width: 1px;
 }
 
 /* Kontrol bawah: penghitung + progress bar + tombol */
@@ -1045,6 +1047,223 @@ body.menu-open {
   width: 22px;
   height: 22px;
   transition: rotate var(--dur-hover) var(--ease), filter var(--dur-hover) var(--ease);
+}
+
+/* ----- Work Card: varian khusus Works (status dari content.js) ----- */
+.work-card {
+  position: relative;
+}
+/* Stretched link: link di nama project menutupi seluruh kartu */
+.work-card__link {
+  color: inherit;
+}
+.work-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.work-card__link:focus-visible {
+  outline: none;
+}
+.work-card__link:focus-visible::after {
+  outline: 2px solid var(--color-primary-main);
+  outline-offset: 4px;
+  border-radius: 24px;
+}
+/* Kartu tidak bisa diklik (In development / Confidential) */
+.work-card--static {
+  cursor: default;
+}
+/* Lapisan di atas cover yang bisa diklik sendiri (badge toko, chip prototype) berada di atas stretched link */
+.work-card__stores,
+.chip-proto {
+  z-index: 2;
+}
+.chip-dev,
+.work-card__overlay {
+  z-index: 1;
+}
+/* Chip tahun tetap terlihat di atas overlay Confidential */
+.work-card__year {
+  z-index: 2;
+}
+
+/* Tombol toko custom (PNG dari Figma), urutan Play Store lalu App Store */
+.work-card__stores {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 6px;
+}
+.work-card__stores--right {
+  left: auto;
+  right: 12px;
+}
+.store-badge {
+  display: block;
+  border-radius: 12px;
+  transition: translate var(--dur-hover) var(--ease);
+}
+.store-badge img {
+  display: block;
+  width: auto;
+  height: 32px;   /* mobile ±32px, desktop 40px */
+}
+
+/* Chip "In development" (Warning/Surface, titik Warning/Main) — pulse, shimmer, float */
+.chip-dev {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-warning-surface);
+  box-shadow: 0 6px 16px rgba(13, 20, 51, 0.18);
+  color: var(--color-neutral-on-surface);
+  font: var(--text-xs-bold);
+  letter-spacing: 0.036px;
+  white-space: nowrap;
+}
+.chip-dev__dot {
+  position: relative;
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-warning-main);
+}
+.chip-dev__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--color-warning-main);
+  opacity: 0;
+}
+.chip-dev::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 50%;
+  background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  translate: 0 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Card Design: saat diam cover normal; overlay (blur + chip + catatan) muncul saat hover/tap/fokus, fade 0.25s */
+.work-card__overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-hover) var(--ease);
+}
+.work-card--confidential.is-revealed .work-card__overlay,
+.work-card--confidential:focus-visible .work-card__overlay {
+  opacity: 1;
+}
+.work-card--confidential:focus-visible {
+  outline: 2px solid var(--color-primary-main);
+  outline-offset: 4px;
+  border-radius: 24px;
+}
+.work-card__veil {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.chip-confidential {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--color-neutral-on-surface);
+  box-shadow: 0 6px 16px rgba(13, 20, 51, 0.18);
+  color: var(--color-neutral-white);
+  font: var(--text-xs-bold);
+  letter-spacing: 0.036px;
+  white-space: nowrap;
+}
+.chip-confidential img {
+  width: 14px;
+  height: 14px;
+}
+.work-card__note {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  background: var(--color-neutral-white);
+  box-shadow: 0 6px 16px rgba(13, 20, 51, 0.18);
+  white-space: nowrap;
+}
+.work-card__note img {
+  width: 24px;
+  height: 24px;
+}
+.work-card__note-title {
+  font: var(--text-s-bold);
+  letter-spacing: 0.042px;
+  color: var(--color-neutral-on-surface);
+}
+.work-card__note-sub {
+  font: var(--text-xs);
+  letter-spacing: 0.036px;
+  color: var(--color-neutral-on-surface-variant);
+}
+
+/* Lingkaran abu nonaktif: jam (In development) / gembok (Confidential) */
+.work-card__arrow--muted {
+  position: relative;
+  border: 1px solid var(--color-neutral-outline);
+  background: var(--color-neutral-surface-tint);
+}
+.work-card__arrow--muted img {
+  transition: none;
+}
+
+/* Chip "Try prototype" (Praktikum Transpor Aktif) */
+.chip-proto {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--color-primary-main);
+  box-shadow: 0 6px 16px rgba(13, 20, 51, 0.18);
+  color: var(--color-neutral-white);
+  font: var(--text-xs-bold);
+  letter-spacing: 0.036px;
+  white-space: nowrap;
+  transition: background-color var(--dur-hover) var(--ease);
+}
+.chip-proto img {
+  width: 12px;
+  height: 12px;
 }
 
 /* ===== 11. KARTU UMUM (Process Step & Value Card) ===== */
@@ -1877,6 +2096,10 @@ a.footer__link:hover {
   .ribbons--faq,
   .ribbons--footer {
     --rb-top: -80px;
+    bottom: auto;
+  }
+  .ribbons--footer img {
+    height: auto;
   }
   /* Pita Why: SVG 1750×1514 (lebih lebar dari bingkai 1440), tetap di tengah, naik 205px seperti Figma */
   .ribbons--why {
@@ -2019,14 +2242,6 @@ a.footer__link:hover {
   .works__eyebrow {
     color: var(--color-primary-main);
   }
-  .works__all.works__all--top,
-  .carousel-arrows.carousel-arrows--top {
-    display: flex;
-  }
-  .works__all.works__all--bottom,
-  .carousel-arrows.carousel-arrows--bottom {
-    display: none;
-  }
   .carousel-arrows {
     gap: 12px;
   }
@@ -2043,22 +2258,21 @@ a.footer__link:hover {
     margin-right: 0;
     cursor: grab;
   }
+  /* Desktop: grid 2 baris, kolom 588px (setengah viewport); 2 kolom terlihat, geser satu kolom (612px) per langkah.
+     Posisi kolom/baris tiap kartu (--col/--row) dihitung script.js */
   .works__track {
-    gap: 120px;
-  }
-  .works-page {
     display: grid;
-    flex: 0 0 100%;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    grid-auto-columns: calc((100% - 24px) / 2);
     gap: 48px 24px;
-    scroll-snap-align: start;
   }
   .works__track .work-card {
-    flex: none;
-    scroll-snap-align: none;
+    grid-column: var(--col);
+    grid-row: var(--row);
+    scroll-snap-align: start;
   }
-  .works__track .work-card:last-child {
-    margin-right: 0;
+  .works__track::after {
+    content: none;
   }
   .work-card__image {
     height: auto;
@@ -2072,6 +2286,27 @@ a.footer__link:hover {
     font-size: 24px;
     line-height: 36px;
     letter-spacing: 0.072px;
+  }
+  /* Lapisan cover desktop: 20px dari tepi kartu seperti Figma (19px + border 1px) */
+  .work-card__stores {
+    left: 19px;
+    bottom: 19px;
+    gap: 8px;
+  }
+  .work-card__stores--right {
+    right: 19px;
+  }
+  .store-badge img {
+    height: 40px;
+  }
+  .chip-dev,
+  .chip-confidential {
+    top: 19px;
+    right: 19px;
+  }
+  .chip-proto {
+    left: 19px;
+    bottom: 19px;
   }
   .works__progress {
     gap: 20px;
@@ -2373,19 +2608,46 @@ a.footer__link:hover {
     rotate: 45deg;   /* panah ↗ jadi menghadap kanan */
     filter: brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(800%) hue-rotate(160deg);
   }
-  .work-card:hover .work-card__placeholder,
-  .work-card:hover .work-card__image > img {
+  /* Hover kartu Works — hanya kartu yang bisa diklik (bukan In development / Confidential) */
+  .work-card:not(.work-card--static):hover .work-card__placeholder,
+  .work-card:not(.work-card--static):hover .work-card__image > img {
     scale: 1.05;
   }
-  .work-card:hover .work-card__name {
+  .work-card--gif:not(.work-card--static):hover .work-card__image > img {
+    scale: 1.03;
+  }
+  .work-card:not(.work-card--static):hover .work-card__name {
     color: var(--color-primary-main);
   }
-  .work-card:hover .work-card__arrow {
+  .work-card:not(.work-card--static):hover .work-card__arrow {
     background: var(--color-secondary-main);
   }
-  .work-card:hover .work-card__arrow img {
+  .work-card:not(.work-card--static):hover .work-card__arrow img {
     rotate: 45deg;
     filter: brightness(0) saturate(100%) invert(15%) sepia(9%) saturate(800%) hue-rotate(160deg);
+  }
+  /* Masjid (In development): hover sama, tapi ikon jam tidak diputar */
+  .work-card--in-development:hover .work-card__image > img {
+    scale: 1.05;
+  }
+  .work-card--in-development:hover .work-card__name,
+  .work-card--confidential:hover .work-card__name {
+    color: var(--color-primary-main);
+  }
+  .work-card--in-development:hover .work-card__arrow,
+  .work-card--confidential:hover .work-card__arrow {
+    border-color: var(--color-secondary-main);
+    background: var(--color-secondary-main);
+  }
+  .store-badge:hover {
+    translate: 0 -2px;
+  }
+  .chip-proto:hover {
+    background: var(--color-primary-hover);
+  }
+  /* Card Design: overlay Confidential muncul saat hover */
+  .work-card--confidential:hover .work-card__overlay {
+    opacity: 1;
   }
   .card:hover {
     transform: translateY(-4px);
@@ -2794,6 +3056,24 @@ a.footer__link:hover {
   0%, 100% { color: var(--color-success-main); }
   50% { color: var(--color-primary-main); }
 }
+/* Chip "In development" di kartu Works */
+@keyframes chip-dev-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -3px; }
+}
+@keyframes chip-dev-breathe {
+  0%, 100% { scale: 1; }
+  50% { scale: 1.15; }
+}
+@keyframes chip-dev-ring {
+  0% { scale: 1; opacity: 0.5; }
+  100% { scale: 2.4; opacity: 0; }
+}
+@keyframes chip-dev-shimmer {
+  0% { translate: 0 0; opacity: 1; }
+  32% { translate: 340% 0; opacity: 1; }   /* sapuan 1.2s, lalu jeda ±2.5s */
+  33%, 100% { translate: 340% 0; opacity: 0; }
+}
 @keyframes dot-secondary-cyan {
   0%, 100% { color: var(--color-secondary-main); }
   50% { color: var(--color-accent-cyan); }
@@ -2896,6 +3176,12 @@ a.footer__link:hover {
   /* Titik status: berkelip 2 warna + cincin berdenyut (eyebrow hero, CTA, pil Process) */
   .eyebrow-chip__dot { animation: dot-info-warning 1.2s steps(1, end) infinite, pulse-ring 1.2s ease-out infinite; }
   .pill-glass__dot { animation: dot-secondary-cyan 1.2s steps(1, end) infinite, pulse-ring 1.2s ease-out infinite; }
+
+  /* Works: chip "In development" mengambang, titik bernapas + cincin, kilau menyapu */
+  .chip-dev { animation: chip-dev-float 4s ease-in-out infinite; }
+  .chip-dev__dot { animation: chip-dev-breathe 1.8s ease-in-out infinite; }
+  .chip-dev__dot::after { animation: chip-dev-ring 1.8s ease-out infinite; }
+  .chip-dev::after { animation: chip-dev-shimmer 3.7s ease-in-out 0.6s infinite; }
 
   /* Ilustrasi Process bergerak pelan terus-menerus (pakai transform, jadi tidak bentrok dengan efek hover) */
   .ill-d__sticky--yellow,

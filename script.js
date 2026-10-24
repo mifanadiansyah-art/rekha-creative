@@ -172,40 +172,114 @@ const layarDesktop = window.matchMedia("(min-width: 768px)");
 // Escape teks supaya aman dimasukkan ke HTML
 const aman = (teks) => String(teks).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
+const LINK_BARU = 'target="_blank" rel="noopener noreferrer" draggable="false"';
+const ikon = (file, ukuran, kelas = "") =>
+  `<img${kelas ? ` class="${kelas}"` : ""} src="assets/img/works/${file}" alt="" width="${ukuran}" height="${ukuran}" draggable="false">`;
+
+// Kartu project. Status (content.js): live = bisa diklik · in-development & confidential = tidak bisa diklik.
+// Kartu live memakai pola "stretched link": link di nama project menutupi seluruh kartu,
+// sedangkan badge toko & chip "Try prototype" adalah link terpisah di atasnya.
 function buatKartu(p, urutan) {
+  const links = p.links || {};
+  const bisaDiklik = p.status === "live" && links.primary;
+  const isGif = /\.gif$/i.test(p.image);
+
   const gambar = p.image
-    ? `<img src="${aman(p.image)}" alt="${aman(p.name)}" loading="lazy" draggable="false">`
+    ? `<img class="work-card__cover" src="${aman(isGif && kurangiAnimasi && p.poster ? p.poster : p.image)}"${isGif && p.poster ? ` data-gif="${aman(p.image)}" data-poster="${aman(p.poster)}"` : ""} alt="${aman(p.alt || p.name)}" width="588" height="420" loading="lazy" draggable="false">`
     : `<div class="work-card__placeholder"><img src="assets/img/icon-image.svg" alt="" width="40" height="40" draggable="false"><span>Replace with project image</span></div>`;
+
+  // Lapisan tambahan di atas cover, sesuai frame "Work Card — <nama>" di Figma
+  let lapisan = "";
+  if (links.playStore || links.appStore) {
+    lapisan += `<div class="work-card__stores${p.badgePosition === "right" ? " work-card__stores--right" : ""}">
+      ${links.playStore ? `<a class="store-badge" href="${aman(links.playStore)}" ${LINK_BARU} aria-label="${aman(p.name)} di Google Play"><img src="assets/img/works/badge-play-store.png" alt="" width="124" height="40" draggable="false"></a>` : ""}
+      ${links.appStore ? `<a class="store-badge" href="${aman(links.appStore)}" ${LINK_BARU} aria-label="${aman(p.name)} di App Store"><img src="assets/img/works/badge-app-store.png" alt="" width="123" height="40" draggable="false"></a>` : ""}
+    </div>`;
+  }
+  if (p.status === "in-development") {
+    lapisan += `<span class="chip-dev"><span class="chip-dev__dot"></span>In development</span>`;
+  }
+  if (p.status === "confidential") {
+    // Overlay hanya muncul saat hover/tap/fokus (frame "Hover overlay" di Figma); saat diam cover tampil normal
+    lapisan += `<span class="work-card__overlay">
+        <span class="work-card__veil" aria-hidden="true"></span>
+        <span class="chip-confidential">${ikon("icon-lock-chip.svg", 14)}Confidential</span>
+        <span class="work-card__note">${ikon("icon-lock-note.svg", 24)}<span class="work-card__note-title">Private client work</span><span class="work-card__note-sub">Available on request</span></span>
+      </span>`;
+  }
+  if (p.prototype && bisaDiklik) {
+    lapisan += `<a class="chip-proto" href="${aman(links.primary)}" ${LINK_BARU}>${ikon("icon-play.svg", 12)}Try prototype</a>`;
+  }
+
+  // Lingkaran panah kanan bawah: panah biru (live), jam (in development), gembok (confidential)
+  let panah = `<span class="work-card__arrow"><img src="assets/img/icon-arrow-work.svg" alt="" width="22" height="22" draggable="false"></span>`;
+  if (p.status === "in-development") panah = `<span class="work-card__arrow work-card__arrow--muted">${ikon("icon-clock.svg", 22)}</span>`;
+  if (p.status === "confidential") panah = `<span class="work-card__arrow work-card__arrow--muted">${ikon("icon-lock-arrow.svg", 20)}</span>`;
+
+  const nama = bisaDiklik
+    ? `<a class="work-card__link" href="${aman(links.primary)}" ${LINK_BARU}>${aman(p.name)}</a>`
+    : aman(p.name);
+  const kelas = ["work-card", `work-card--${p.status || "live"}`, isGif ? "work-card--gif" : "", bisaDiklik ? "" : "work-card--static"].filter(Boolean).join(" ");
+
+  // Card Design bisa difokus (keyboard) / di-tap (HP) untuk menampilkan overlay
+  const fokus = p.status === "confidential" ? ' tabindex="0"' : "";
+  const pos = posisiDesktop(urutan, PROJECTS.length);
+
   return `
-    <a class="work-card" href="${aman(p.link || CONTACT.portfolio)}" target="_blank" rel="noopener noreferrer" draggable="false" style="--i: ${urutan % KARTU_PER_HALAMAN}">
+    <article class="${kelas}"${bisaDiklik ? "" : ' aria-disabled="true"'}${fokus} data-row="${pos.baris}" style="--i: ${urutan % KARTU_PER_HALAMAN}; --col: ${pos.kolom}; --row: ${pos.baris}">
       <div class="work-card__image">
         ${gambar}
         <span class="work-card__year">${aman(p.year)}</span>
+        ${lapisan}
       </div>
       <div class="work-card__meta">
         <div>
-          <h3 class="work-card__name">${aman(p.name)}</h3>
+          <h3 class="work-card__name">${nama}</h3>
           <p class="work-card__cat">${aman(p.category)}</p>
         </div>
-        <span class="work-card__arrow"><img src="assets/img/icon-arrow-work.svg" alt="" width="22" height="22" draggable="false"></span>
+        ${panah}
       </div>
-    </a>`;
+    </article>`;
 }
 
-// Kartu dikelompokkan per 4 ("halaman"). Di mobile, halaman dibuat display: contents oleh CSS
-let htmlHalaman = "";
-for (let i = 0; i < PROJECTS.length; i += KARTU_PER_HALAMAN) {
-  const isi = PROJECTS.slice(i, i + KARTU_PER_HALAMAN).map((p, j) => buatKartu(p, i + j)).join("");
-  htmlHalaman += `<div class="works-page">${isi}</div>`;
+// Posisi kartu di grid desktop (2 baris, kolom bergeser satu per satu).
+// Tiap 4 kartu mengisi 2 kolom baris demi baris (1·2 di atas, 3·4 di bawah);
+// sisa 1–2 kartu mengisi kolom berikutnya dari atas ke bawah.
+// Hasil untuk 6 project: kolom 1 = AyoMuslim/Gudang Buku, kolom 2 = AyoSiswa/Masjid, kolom 3 = Card Design/Praktikum.
+function posisiDesktop(i, total) {
+  const blok = Math.floor(i / KARTU_PER_HALAMAN);
+  const j = i % KARTU_PER_HALAMAN;
+  const sisaBlok = Math.min(KARTU_PER_HALAMAN, total - blok * KARTU_PER_HALAMAN);
+  if (sisaBlok === KARTU_PER_HALAMAN) return { kolom: blok * 2 + (j % 2) + 1, baris: Math.floor(j / 2) + 1 };
+  return { kolom: blok * 2 + Math.floor(j / 2) + 1, baris: (j % 2) + 1 };
 }
-worksTrack.innerHTML = htmlHalaman;
+
+worksTrack.innerHTML = PROJECTS.map((p, i) => buatKartu(p, i)).join("");
+
+// Card Design: tap di layar sentuh menampilkan/menyembunyikan overlay "Confidential"
+worksTrack.querySelectorAll(".work-card--confidential").forEach((kartu) => {
+  kartu.addEventListener("click", () => kartu.classList.toggle("is-revealed"));
+});
 
 // Kartu reveal (fade-up berurutan) saat pertama terlihat
 worksTrack.querySelectorAll(".work-card").forEach((k) => k.classList.add("reveal"));
 
-// Langkah geser: desktop = per halaman, mobile = per kartu
-const langkahCarousel = () =>
-  [...worksTrack.querySelectorAll(layarDesktop.matches ? ".works-page" : ".work-card")];
+// GIF cover: kalau pengguna memilih "kurangi animasi", tampil frame statis dan baru diputar saat hover
+if (kurangiAnimasi) {
+  worksTrack.querySelectorAll(".work-card__cover[data-gif]").forEach((img) => {
+    const kartu = img.closest(".work-card");
+    kartu.addEventListener("mouseenter", () => (img.src = img.dataset.gif));
+    kartu.addEventListener("mouseleave", () => (img.src = img.dataset.poster));
+  });
+}
+
+// Langkah geser: desktop = per kolom (2 kolom terlihat, jadi jumlah langkah = kolom − 1), mobile = per kartu
+const langkahCarousel = () => {
+  if (!layarDesktop.matches) return [...worksTrack.querySelectorAll(".work-card")];
+  const atas = [...worksTrack.querySelectorAll('.work-card[data-row="1"]')]
+    .sort((a, b) => a.style.getPropertyValue("--col") - b.style.getPropertyValue("--col"));
+  return atas.slice(0, Math.max(1, atas.length - 1));
+};
 
 let indeksAktif = 0;
 
@@ -233,27 +307,38 @@ function updateKontrol() {
   document.getElementById("worksBar").style.setProperty("--progress", `${((baru + 1) / total) * 100}%`);
   document.querySelectorAll('[data-carousel="prev"]').forEach((b) => (b.disabled = baru === 0));
   document.querySelectorAll('[data-carousel="next"]').forEach((b) => (b.disabled = baru === total - 1));
-
-  // Desktop: kartu di halaman baru masuk dengan slide + fade
-  if (baru !== indeksAktif && layarDesktop.matches && !kurangiAnimasi) {
-    langkahCarousel()[baru].querySelectorAll(".work-card").forEach((k) => {
-      k.classList.remove("is-entering");
-      void k.offsetWidth;   // restart animasi
-      k.classList.add("is-entering");
-    });
-  }
   indeksAktif = baru;
 }
 
+// Geser ke langkah i dengan transisi 0.6s (easing sama dengan --ease). Snap dimatikan selama animasi.
+let animGeser = null;
 function geserKe(i) {
   const langkah = langkahCarousel();
   const target = langkah[Math.max(0, Math.min(langkah.length - 1, i))];
-  worksViewport.scrollTo({
-    left: target.offsetLeft - worksTrack.offsetLeft,
-    behavior: kurangiAnimasi ? "auto" : "smooth",
-  });
-  // Cadangan bila event scroll tidak terpicu (mis. browser lama tanpa "scrollend")
-  setTimeout(updateKontrol, kurangiAnimasi ? 50 : 700);
+  const maks = worksViewport.scrollWidth - worksViewport.clientWidth;
+  const tujuan = Math.min(maks, target.offsetLeft - worksTrack.offsetLeft);
+
+  cancelAnimationFrame(animGeser);
+  if (kurangiAnimasi) {
+    worksViewport.scrollLeft = tujuan;
+    setTimeout(updateKontrol, 50);
+    return;
+  }
+  const dari = worksViewport.scrollLeft;
+  const mulai = performance.now();
+  const durasi = 600;
+  const halus = (t) => 1 - Math.pow(1 - t, 4);   // mendekati cubic-bezier(0.22, 1, 0.36, 1)
+  worksViewport.classList.add("is-animating");
+  (function langkahAnim(waktu) {
+    const t = Math.min(1, (waktu - mulai) / durasi);
+    worksViewport.scrollLeft = dari + (tujuan - dari) * halus(t);
+    if (t < 1) {
+      animGeser = requestAnimationFrame(langkahAnim);
+    } else {
+      worksViewport.classList.remove("is-animating");
+      updateKontrol();
+    }
+  })(mulai);
 }
 
 document.querySelectorAll("[data-carousel]").forEach((tombol) => {

@@ -277,7 +277,8 @@
     <!-- =====================================================
          SELECTED WORKS (Figma 22:70 / 26:240) — carousel
          Kartu project dibuat script.js dari PROJECTS di content.js.
-         Desktop: 4 kartu per halaman (geser per halaman). Mobile: 1 kartu per langkah.
+         Desktop: grid 2 baris × 3 kolom, 2 kolom terlihat, geser satu kolom per langkah. Mobile: 1 kartu per langkah.
+         Perilaku khusus per kartu (badge toko, In development, Confidential, GIF) diatur lewat status/links di content.js.
          ===================================================== -->
     <section class="section works" id="works" aria-labelledby="worksTitle">
       <div class="deco-layer" aria-hidden="true">
@@ -294,11 +295,6 @@
             <p class="heading__eyebrow works__eyebrow">SELECTED WORKS</p>
             <h2 class="heading__title" id="worksTitle">Recent <span class="text-primary">projects.</span></h2>
           </div>
-          <!-- Tombol carousel versi desktop (kanan atas) -->
-          <div class="carousel-arrows carousel-arrows--top reveal" style="--i: 1">
-            <button class="carousel-btn" type="button" data-carousel="prev" aria-label="Previous projects"><img class="carousel-btn__icon" src="assets/img/icon-carousel-prev-white.svg" alt="" width="24" height="24"><img class="carousel-btn__icon carousel-btn__icon--outline" src="assets/img/icon-carousel-prev.svg" alt="" width="24" height="24"></button>
-            <button class="carousel-btn" type="button" data-carousel="next" aria-label="Next projects"><img class="carousel-btn__icon" src="assets/img/icon-carousel-next.svg" alt="" width="24" height="24"><img class="carousel-btn__icon carousel-btn__icon--outline" src="assets/img/icon-carousel-next-blue.svg" alt="" width="24" height="24"></button>
-          </div>
         </div>
 
         <div class="works__viewport" id="worksViewport" tabindex="0" aria-label="Recent projects, scroll horizontally">
@@ -310,16 +306,14 @@
             <p class="works__counter" aria-live="polite"><span class="works__current" id="worksCurrent">01</span> <span class="works__total" id="worksTotal">/ 02</span></p>
             <span class="works__bar"><span class="works__bar-fill" id="worksBar"></span></span>
           </div>
-          <!-- Tombol carousel versi mobile (di samping penghitung) -->
-          <div class="carousel-arrows carousel-arrows--bottom">
-            <button class="carousel-btn" type="button" data-carousel="prev" aria-label="Previous project"><img class="carousel-btn__icon" src="assets/img/icon-carousel-prev-white.svg" alt="" width="24" height="24"><img class="carousel-btn__icon carousel-btn__icon--outline" src="assets/img/icon-carousel-prev.svg" alt="" width="24" height="24"></button>
-            <button class="carousel-btn" type="button" data-carousel="next" aria-label="Next project"><img class="carousel-btn__icon" src="assets/img/icon-carousel-next.svg" alt="" width="24" height="24"><img class="carousel-btn__icon carousel-btn__icon--outline" src="assets/img/icon-carousel-next-blue.svg" alt="" width="24" height="24"></button>
+          <!-- Tombol ← → di kanan bawah, sejajar penghitung (desktop & mobile) -->
+          <div class="carousel-arrows">
+            <button class="carousel-btn" type="button" data-carousel="prev" aria-label="Previous projects"><img class="carousel-btn__icon" src="assets/img/icon-carousel-prev-white.svg" alt="" width="24" height="24"><img class="carousel-btn__icon carousel-btn__icon--outline" src="assets/img/icon-carousel-prev.svg" alt="" width="24" height="24"></button>
+            <button class="carousel-btn" type="button" data-carousel="next" aria-label="Next projects"><img class="carousel-btn__icon" src="assets/img/icon-carousel-next.svg" alt="" width="24" height="24"><img class="carousel-btn__icon carousel-btn__icon--outline" src="assets/img/icon-carousel-next-blue.svg" alt="" width="24" height="24"></button>
           </div>
-          <a class="btn btn--secondary works__all works__all--top" data-link="portfolio" href="#" target="_blank" rel="noopener noreferrer">View All Works</a>
         </div>
 
         <!-- Versi mobile: tombol full-width di bawah -->
-        <a class="btn btn--secondary btn--block works__all works__all--bottom" data-link="portfolio" href="#" target="_blank" rel="noopener noreferrer">View All Works</a>
       </div>
     </section>
 
