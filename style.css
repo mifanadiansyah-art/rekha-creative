@@ -2794,6 +2794,10 @@ a.footer__link:hover {
   0%, 100% { color: var(--color-success-main); }
   50% { color: var(--color-primary-main); }
 }
+@keyframes dot-secondary-cyan {
+  0%, 100% { color: var(--color-secondary-main); }
+  50% { color: var(--color-accent-cyan); }
+}
 @keyframes ill-bob {
   0%, 100% { transform: translate(0, 0); }
   50% { transform: translate(var(--bx, 0px), var(--by, -4px)); }
@@ -2891,7 +2895,7 @@ a.footer__link:hover {
   /* Sparkle & titik */
   /* Titik status: berkelip 2 warna + cincin berdenyut (eyebrow hero, CTA, pil Process) */
   .eyebrow-chip__dot { animation: dot-info-warning 1.2s steps(1, end) infinite, pulse-ring 1.2s ease-out infinite; }
-  .pill-glass__dot { animation: pulse-ring 1.2s ease-out infinite; }
+  .pill-glass__dot { animation: dot-secondary-cyan 1.2s steps(1, end) infinite, pulse-ring 1.2s ease-out infinite; }
 
   /* Ilustrasi Process bergerak pelan terus-menerus (pakai transform, jadi tidak bentrok dengan efek hover) */
   .ill-d__sticky--yellow,
