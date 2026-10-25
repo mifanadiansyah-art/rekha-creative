@@ -193,7 +193,7 @@ function buatKartu(p, urutan) {
   if (links.playStore || links.appStore) {
     lapisan += `<div class="work-card__stores${p.badgePosition === "right" ? " work-card__stores--right" : ""}">
       ${links.playStore ? `<a class="store-badge" href="${aman(links.playStore)}" ${LINK_BARU} aria-label="${aman(p.name)} di Google Play"><img src="assets/img/works/badge-play-store.png" alt="" width="124" height="40" draggable="false"></a>` : ""}
-      ${links.appStore ? `<a class="store-badge" href="${aman(links.appStore)}" ${LINK_BARU} aria-label="${aman(p.name)} di App Store"><img src="assets/img/works/badge-app-store.png" alt="" width="123" height="40" draggable="false"></a>` : ""}
+      ${links.appStore ? `<a class="store-badge" href="${aman(links.appStore)}" ${LINK_BARU} aria-label="${aman(p.name)} di App Store"><img src="assets/img/works/badge-app-store.png" alt="" width="122" height="40" draggable="false"></a>` : ""}
     </div>`;
   }
   if (p.status === "in-development") {
