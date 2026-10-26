@@ -140,6 +140,6 @@ const STATS = {
     { value: 30, suffix: "+", label: "Projects delivered" },
     { value: 4, suffix: "+", label: "Years of experience" },
     { value: 15, suffix: "+", label: "Happy clients" },
-    { prefix: "< ", value: 3, suffix: "h", label: "Average reply time" },
+    { prefix: "< ", value: 1, suffix: "h", label: "Average reply time" },
   ],
 };
