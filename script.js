@@ -221,9 +221,9 @@ function buatKartu(p, urutan) {
     : aman(p.name);
   const kelas = ["work-card", `work-card--${p.status || "live"}`, isGif ? "work-card--gif" : "", bisaDiklik ? "" : "work-card--static"].filter(Boolean).join(" ");
 
-  // Card Design bisa difokus (keyboard) / di-tap (HP) untuk menampilkan overlay
+  // Kartu confidential bisa difokus (keyboard) / di-tap (HP) untuk menampilkan overlay
   const fokus = p.status === "confidential" ? ' tabindex="0"' : "";
-  const pos = posisiDesktop(urutan, PROJECTS.length);
+  const pos = posisiDesktop(urutan);
 
   return `
     <article class="${kelas}"${bisaDiklik ? "" : ' aria-disabled="true"'}${fokus} data-row="${pos.baris}" style="--i: ${urutan % KARTU_PER_HALAMAN}; --col: ${pos.kolom}; --row: ${pos.baris}">
@@ -243,20 +243,14 @@ function buatKartu(p, urutan) {
 }
 
 // Posisi kartu di grid desktop (2 baris, kolom bergeser satu per satu).
-// Tiap 4 kartu mengisi 2 kolom baris demi baris (1·2 di atas, 3·4 di bawah);
-// sisa 1–2 kartu mengisi kolom berikutnya dari atas ke bawah.
-// Hasil untuk 6 project: kolom 1 = AyoMuslim/Gudang Buku, kolom 2 = AyoSiswa/Masjid, kolom 3 = Card Design/Praktikum.
-function posisiDesktop(i, total) {
-  const blok = Math.floor(i / KARTU_PER_HALAMAN);
-  const j = i % KARTU_PER_HALAMAN;
-  const sisaBlok = Math.min(KARTU_PER_HALAMAN, total - blok * KARTU_PER_HALAMAN);
-  if (sisaBlok === KARTU_PER_HALAMAN) return { kolom: blok * 2 + (j % 2) + 1, baris: Math.floor(j / 2) + 1 };
-  return { kolom: blok * 2 + Math.floor(j / 2) + 1, baris: (j % 2) + 1 };
+// Urutan PROJECTS = urutan mobile = per kolom: tiap 2 kartu berurutan mengisi satu kolom (atas, lalu bawah).
+function posisiDesktop(i) {
+  return { kolom: Math.floor(i / 2) + 1, baris: (i % 2) + 1 };
 }
 
 worksTrack.innerHTML = PROJECTS.map((p, i) => buatKartu(p, i)).join("");
 
-// Card Design: tap di layar sentuh menampilkan/menyembunyikan overlay "Confidential"
+// Kartu confidential: tap di layar sentuh menampilkan/menyembunyikan overlay "Confidential"
 worksTrack.querySelectorAll(".work-card--confidential").forEach((kartu) => {
   kartu.addEventListener("click", () => kartu.classList.toggle("is-revealed"));
 });
